@@ -17,11 +17,7 @@ function parseHTML()
             }
         });
     })
-    setTimeout(function () {
-        console.log(data);
-        console.log("finish");
-    }, 2000)
+
 }
 parseHTML();
-
 module.exports = data;

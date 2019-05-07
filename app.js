@@ -10,7 +10,6 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 //server
-console.log(parser);
 app.get('/', function (req, res) {
   res.render('index', {data: parser});
 });
