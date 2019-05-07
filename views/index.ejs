@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Parser NAU</title>
+    <style>
+        body {
+            padding: 50px 25px;
+            font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+        }
+
+        a {
+            color: #00B7FF;
+        }
+
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="table_project ">
+    <div class="row justify-content-center">
+        <div class="col-1">№</div>
+        <div class="col">Назва</div>
+        <div class="col-2">Всього голосів</div>
+        <div class="col-1">За 10 хв</div>
+        <div class="col-1">За 1 год</div>
+        <div class="col-1">За 3 год</div>
+        <div class="col-1">За 6 год</div>
+        <div class="col-1">За 12 год</div>
+        <div class="col-1">За 24 год</div>
+    </div>
+    <% data.forEach(function (value1, index) { %>
+    <div class="row justify-content-center">
+        <div class="col-1 number"><%= index+1 %></div>
+        <div class="col">
+            <a class="project_link" href="<%=value1.link %>"> <%= value1.name %></a></div>
+        <div class="col-2 full_info"><%= value1.suffrage %></div>
+        <div class="col-1 10min_info">0</div>
+        <div class="col-1 1h_info">0</div>
+        <div class="col-1 3h_info">0</div>
+        <div class="col-1 6h_info">0</div>
+        <div class="col-1 12h_info">0</div>
+        <div class="col-1 24h_info">0</div>
+    </div>
+    <% }); %>
+</div>
+
+<script>
+</script>
+</body>
+</html>
