@@ -10,7 +10,8 @@ function parseHTML()
         request(value1.link, function (error, response, body) {
             if (!error) {
                 var __$ = cheerio.load(body);
-                value1.suffrage = __$(".votes-count").find("strong").html();
+                //value1.suffrage = __$(".votes-count").find("strong").html();
+                value1.suffrage = __$(".status").text();
             } else {
                 console.log("Произошла ошибка: " + error);
             }
