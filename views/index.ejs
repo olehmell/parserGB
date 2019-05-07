@@ -14,36 +14,26 @@
             width: 75%;
         }
 
-        .full_info
-        {
+        .full_info {
             color: green;
         }
+
         @media (max-width: 500px) {
             .table_project {
                 font-size: 12px;
-                margin: 0;
-                width: 90%;
+                margin: 5px;
+                width: 100%;
             }
         }
 
     </style>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
 <div class="table_project">
     <div class="row">
-        <div class="col">Назва</div>
-        <div class="col-2">Всього голосів</div>
+        <div class="col-3">Назва</div>
+        <div class="col-3">Всього голосів</div>
         <div class="col-1">За 10 хв</div>
         <div class="col-1">За 1 год</div>
         <div class="col-1">За 3 год</div>
@@ -53,20 +43,19 @@
     </div>
     <% data.forEach(function (value1, index) { %>
     <div class="row">
-        <div class="col project_link">
+        <div class="col-3 project_link">
             <a href="<%=value1.link %>"> <%= value1.name %></a></div>
-        <div class="col-2 full_info"><%= value1.suffrage %></div>
-        <div class="col-1 10min_info">0</div>
-        <div class="col-1 1h_info">0</div>
-        <div class="col-1 3h_info">0</div>
-        <div class="col-1 6h_info">0</div>
-        <div class="col-1 12h_info">0</div>
-        <div class="col-1 24h_info">0</div>
+        <div class="col-3 full_info"><%= value1.suffrage %></div>
+        <div class="col-1 text-center 10min_info">0</div>
+        <div class="col-1 text-center 1h_info">0</div>
+        <div class="col-1 text-center 6h_info">0</div>
+        <div class="col-1 text-center 12h_info">0</div>
+        <div class="col-1 text-center 24h_info">0</div>
     </div>
     <% }); %>
 </div>
-
-<script>
-</script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
