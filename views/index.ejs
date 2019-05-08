@@ -9,9 +9,9 @@
     <style>
         .table_project {
             font-size: 25px;
-            margin-left: 10%;
-            margin-right: 10%;
-            width: 80%;
+            margin-left: 5%;
+            margin-right: 5%;
+            width: 90%;
         }
 
         .full_info {
@@ -34,8 +34,9 @@
     <h2 class="friend text-center">Проекти команди НАУ</h2>
     <hr>
     <div class="row">
+        <div class="col-1">№</div>
         <div class="col-3">Назва</div>
-        <div class="col-3">Всього голосів</div>
+        <div class="col-2">Всього голосів</div>
         <div class="col-1">За 10 хв</div>
         <div class="col-1">За 1 год</div>
         <div class="col-1">За 3 год</div>
@@ -46,9 +47,10 @@
     <hr>
     <% data.forEach(function (value1, index) { %>
     <div class="row">
+        <div class="col-1"><%= value1.number %></div>
         <div class="col-3 project_link">
             <a href="<%=value1.link %>"> <%= value1.name %></a></div>
-        <div class="col-3 full_info"><%= value1.suffrage %></div>
+        <div class="col-2 full_info"><%= value1.suffrage %></div>
         <div class="col-1 text-center 10min_info">0</div>
         <div class="col-1 text-center 1h_info">0</div>
         <div class="col-1 text-center 3h_info">0</div>
@@ -58,7 +60,7 @@
     </div>
     <hr>
     <% if(index == 10) { %>
-    <h2 class="friend text-center my-5">Дружні проекти</h2>
+    <h2 class="friend text-center">Дружні проекти</h2>
     <hr>
     <% } %>
     <% }); %>

@@ -1,73 +1,87 @@
 [
-  {
-    "name": "Соломафест",
-    "link": "https://gb.kyivcity.gov.ua/projects/11/2095",
-    "suffrage": "0"
-  },
-  {
-    "name": "Арт-фестиваль «Повидло»",
-    "link": "https://gb.kyivcity.gov.ua/projects/11/732",
-    "suffrage": "0"
-  },
-  {
-    "name": "Robot Made Challenge",
-    "link": "https://gb.kyivcity.gov.ua/projects/11/2151",
-    "suffrage": "0"
-  },
-  {
-    "name": "Інженерний хакатон",
-    "link": "https://gb.kyivcity.gov.ua/projects/11/1890",
-    "suffrage": "0"
-  },
-  {
-    "name": "Медіастудія",
-    "link": "https://gb.kyivcity.gov.ua/projects/11/1901",
-    "suffrage": "0"
-  },
-  {
-    "name": "Медіашкола",
-    "link": "https://gb.kyivcity.gov.ua/projects/11/2203",
-    "suffrage": "0"
-  },
-  {
-    "name": "Practical CyberSecurity Days",
-    "link": "https://gb.kyivcity.gov.ua/projects/11/1942",
-    "suffrage": "0"
-  },
-  {
-    "name": "Cybersecurity training center",
-    "link": "https://gb.kyivcity.gov.ua/projects/11/2031",
-    "suffrage": "0"
-  },
-  {
-    "name": "Ракета",
-    "link": "https://gb.kyivcity.gov.ua/projects/11/2002",
-    "suffrage": "0"
-  },
-  {
-    "name": "AirZoom",
-    "link": "https://gb.kyivcity.gov.ua/projects/11/1300",
-    "suffrage": "0"
-  },
-  {
-    "name": "Кіберчемпіонат",
-    "link": "https://gb.kyivcity.gov.ua/projects/11/1661",
-    "suffrage": "0"
-  },
-  {
-    "name": "Дружній проект",
-    "link": "https://gb.kyivcity.gov.ua/projects/11/668",
-    "suffrage": "0"
-  },
-  {
-    "name": "Дружній проект",
-    "link": "https://gb.kyivcity.gov.ua/projects/11/1300",
-    "suffrage": "0"
-  },
-  {
-    "name": "Дружній проект",
-    "link": "https://gb.kyivcity.gov.ua/projects/11/668",
-    "suffrage": "0"
-  }
+{
+"number": "2095",
+"name": "Соломафест",
+"link": "https://gb.kyivcity.gov.ua/projects/11/2095",
+"suffrage": "0"
+},
+{
+"number": "732",
+"name": "Арт-фестиваль «Повидло»",
+"link": "https://gb.kyivcity.gov.ua/projects/11/732",
+"suffrage": "0"
+},
+{
+"number": "2151",
+"name": "Robot Made Challenge",
+"link": "https://gb.kyivcity.gov.ua/projects/11/2151",
+"suffrage": "0"
+},
+{
+"number": "1890",
+"name": "Інженерний хакатон",
+"link": "https://gb.kyivcity.gov.ua/projects/11/1890",
+"suffrage": "0"
+},
+{
+"number": "1901",
+"name": "Медіастудія",
+"link": "https://gb.kyivcity.gov.ua/projects/11/1901",
+"suffrage": "0"
+},
+{
+"number": "2203",
+"name": "Медіашкола",
+"link": "https://gb.kyivcity.gov.ua/projects/11/2203",
+"suffrage": "0"
+},
+{
+"number": "1942",
+"name": "Practical CyberSecurity Days",
+"link": "https://gb.kyivcity.gov.ua/projects/11/1942",
+"suffrage": "0"
+},
+{
+"number": "2031",
+"name": "Cybersecurity training center",
+"link": "https://gb.kyivcity.gov.ua/projects/11/2031",
+"suffrage": "0"
+},
+{
+"number": "2002",
+"name": "Ракета",
+"link": "https://gb.kyivcity.gov.ua/projects/11/2002",
+"suffrage": "0"
+},
+{
+"number": "1300",
+"name": "AirZoom",
+"link": "https://gb.kyivcity.gov.ua/projects/11/1300",
+"suffrage": "0"
+},
+{
+"number": "1661",
+"name": "Кіберчемпіонат",
+"link": "https://gb.kyivcity.gov.ua/projects/11/1661",
+"suffrage": "0"
+},
+{
+"number": "2091",
+"name": "Дружній проект",
+"link": "https://gb.kyivcity.gov.ua/projects/11/668",
+"suffrage": "0"
+},
+{
+"number": "2099",
+"name": "Дружній проект",
+"link": "https://gb.kyivcity.gov.ua/projects/11/1300",
+"suffrage": "0"
+},
+{
+"number": "2096",
+"name": "Дружній проект",
+"link": "https://gb.kyivcity.gov.ua/projects/11/668",
+"suffrage": "0"
+}
 
 ]
