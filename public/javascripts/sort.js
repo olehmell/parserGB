@@ -1,4 +1,4 @@
-$(".reload").on("click",()=>location.reload());
+//$(".reload").on("click",()=>location.reload());
 $(".sortUp").on("click",function () {
     let $this = $(this);
     let valClass = ($this.parent());
