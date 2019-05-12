@@ -9,7 +9,7 @@
     <style>
         .table_project {
             overflow-x: hidden;
-            font-size: 25px;
+            font-size: 22px;
             margin-left: 5%;
             margin-right: 5%;
             width: 90%;
@@ -35,9 +35,20 @@
         .down {
             transform: rotate(180deg);
         }
+        @media (min-width: 500px) and (max-width: 900px){
+            .table_project {
+                overflow-x: hidden;
+                font-size: 15px;
+                width: 100%;
+            }
+            img {
+                height: 30px;
+                width: 30px;
+            }
+        }
         @media (max-width: 500px) {
             .table_project {
-                font-size: 12px;
+                font-size: 10px;
                 margin: 0;
                 width: 100%;
             }
@@ -49,6 +60,7 @@
             .big {
                 font-size: 12px;
             }
+
         }
 
     </style>
@@ -81,7 +93,7 @@
     <% data.forEach(function (value1, index) { %>
     <div class="row sort_rows">
         <div class="col-1 number"><%= value1.number %></div>
-        <div class="col-3 project_link pr-0 mr-3">
+        <div class="col-3 project_link pr-0 mr-2">
             <a href="<%=value1.link %>"> <%= value1.name %></a></div>
         <div class="col-1 pl-0  text-center full_info"><%= value1.suffrage %></div>
         <div class="col-1 text-center pl-0 10min_info"><%= value1.ten %></div>
