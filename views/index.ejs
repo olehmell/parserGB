@@ -8,23 +8,44 @@
     <title>Parser NAU</title>
     <style>
         .table_project {
+            overflow-x: hidden;
             font-size: 25px;
             margin-left: 5%;
             margin-right: 5%;
             width: 90%;
         }
-        .sort:hover{
+
+        img {
+            height: 40px;
+            width: 40px;
+        }
+
+        .big {
+            font-size: 25px;
+        }
+
+        .sortUp:hover, .sortDown:hover {
             cursor: pointer;
         }
-        .full_info {
-            color: green;
+
+        .down {
+            transform: rotate(180deg);
         }
+
 
         @media (max-width: 500px) {
             .table_project {
                 font-size: 12px;
-                margin: 5px;
+                margin: 0;
                 width: 100%;
+            }
+
+            img {
+                height: 40%;
+            }
+
+            .big {
+                font-size: 12px;
             }
         }
 
@@ -36,36 +57,42 @@
     <h2 class="friend text-center">Проекти команди НАУ</h2>
     <hr>
     <div class="row">
-        <div class="col-1 text-center number" onclick="sort()">№
-            <img src="../images/iconfinder_chevron-circle-down_1608620.svg" class="sort" height="40" width="40" alt="sort">
+        <div class="col-1 big text-center number">№</div>
+        <div class="col-3 big pr-0">Назва</div>
+        <div class="col-1 pl-0 mr-2 text-center full_info">Всього
+            <img src="../images/iconfinder_chevron-circle-down_1608620.svg" class="sortUp" alt="sort">
         </div>
-        <div class="col-3">Назва</div>
-        <div class="col-2 full_info">Всього голосів <img src="../images/iconfinder_chevron-circle-down_1608620.svg" class="sort" height="40" width="40" alt="sort"></div>
-        <div class="col-1 text-center 10min_info">За 10 хв <img src="../images/iconfinder_chevron-circle-down_1608620.svg" class="sort" height="40" width="40" alt="sort"></div>
-        <div class="col-1 text-center 1h_info">За 1 год <img src="../images/iconfinder_chevron-circle-down_1608620.svg" class="sort" height="40" width="40" alt="sort"></div>
-        <div class="col-1 text-center 3h_info">За 3 год <img src="../images/iconfinder_chevron-circle-down_1608620.svg" class="sort" height="40" width="40" alt="sort"></div>
-        <div class="col-1 text-center 6h_info">За 6 год <img src="../images/iconfinder_chevron-circle-down_1608620.svg" class="sort" height="40" width="40" alt="sort"></div>
-        <div class="col-1 text-center 12h_info">За 12 год <img src="../images/iconfinder_chevron-circle-down_1608620.svg" class="sort" height="40" width="40" alt="sort"></div>
-        <div class="col-1 text-center 24h_info">За 24 год <img src="../images/iconfinder_chevron-circle-down_1608620.svg" class="sort" height="40" width="40" alt="sort"></div>
+        <div class="col-1 pl-0 text-center 10min_info">10хв
+            <img src="../images/iconfinder_chevron-circle-down_1608620.svg" class="sortUp" alt="sort"></div>
+        <div class="col-1 pl-0 text-center 1h_info">1год
+            <img src="../images/iconfinder_chevron-circle-down_1608620.svg" class="sortUp" alt="sort"></div>
+        <div class="col-1 pl-0 text-center 3h_info">3год
+            <img src="../images/iconfinder_chevron-circle-down_1608620.svg" class="sortUp" alt="sort"></div>
+        <div class="col-1 pl-0 text-center 6h_info">6год
+            <img src="../images/iconfinder_chevron-circle-down_1608620.svg" class="sortUp" alt="sort"></div>
+        <div class="col-1 pl-0 text-center 12h_info">12год
+            <img src="../images/iconfinder_chevron-circle-down_1608620.svg" class="sortUp" alt="sort"></div>
+        <div class="col-1 pl-0 text-center 24h_info">24год
+            <img src="../images/iconfinder_chevron-circle-down_1608620.svg" class="sortUp" alt="sort"></div>
     </div>
-    <hr class="appendTo">
+    <hr>
     <% data.forEach(function (value1, index) { %>
     <div class="row sort_rows">
         <div class="col-1 number"><%= value1.number %></div>
-        <div class="col-3 project_link">
+        <div class="col-3 project_link pr-0 mr-3">
             <a href="<%=value1.link %>"> <%= value1.name %></a></div>
-        <div class="col-2 text-center full_info"><%= value1.suffrage %></div>
-        <div class="col-1 text-center 10min_info"><%= value1.ten %></div>
-        <div class="col-1 text-center 1h_info"><%= value1.hour1 %></div>
-        <div class="col-1 text-center 3h_info"><%= value1.hour3 %></div>
-        <div class="col-1 text-center 6h_info"><%= value1.hour6 %></div>
-        <div class="col-1 text-center 12h_info"><%= value1.hour12 %></div>
-        <div class="col-1 text-center 24h_info"><%= value1.hour24 %></div>
+        <div class="col-1 pl-0  text-center full_info"><%= value1.suffrage %></div>
+        <div class="col-1 text-center pl-0 10min_info"><%= value1.ten %></div>
+        <div class="col-1 text-center pl-0 1h_info"><%= value1.hour1 %></div>
+        <div class="col-1 text-center pl-0 3h_info"><%= value1.hour3 %></div>
+        <div class="col-1 text-center pl-0 6h_info"><%= value1.hour6 %></div>
+        <div class="col-1 text-center pl-0 12h_info"><%= value1.hour12 %></div>
+        <div class="col-1 text-center pl-0 24h_info"><%= value1.hour24 %></div>
     </div>
     <hr>
     <% if(index == 10) { %>
-    <h2 class="friend text-center">Дружні проекти</h2>
-    <hr>
+    <h2 class="friend hide text-center">Дружні проекти</h2>
+    <hr class="friend hide">
     <% } %>
     <% }); %>
 </div>
