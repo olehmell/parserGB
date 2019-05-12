@@ -22,9 +22,9 @@ conn.connect(function(err) {
 
     //console.log(table);
 
-    const delet = "drop table projects;"
+    //const delet = "drop table projects;"
     //const show = "select * from projects;"
-    conn.query(delet,(err,result) => console.log(result))
+    //conn.query(delet,(err,result) => console.log(result))
     const sql0 = "SHOW TABLES LIKE 'projects';"
     function createTable()
     {
