@@ -7,11 +7,7 @@ var data = JSON.parse(fs.readFileSync('views/test.json'));
 
 
 function parserHTML() {
-setTimeout(()=>console.log("sq"),5000);
-    let arr = "";
-    let vall = "";
-    let summ = "";
-
+    let arr = "", vall = "", summ = "";
 
     function insert() {
 
@@ -22,9 +18,10 @@ setTimeout(()=>console.log("sq"),5000);
             console.log("insert to finish");
         });
 
-        const time = [3, 12, 36, 72, 144, 288];
+        const time = [10, 60, 180, 360, 720, 1440];
         time.forEach(function (value, index) {
-            const sumSQL = `SELECT ${summ} FROM (SELECT * FROM projects ORDER BY id DESC LIMIT 0 , ${value}) t ORDER BY id ASC;`
+            //const sumSQL = `SELECT ${summ} FROM (SELECT * FROM projects ORDER BY id DESC LIMIT 0 , ${value}) t ORDER BY id ASC;`
+            const sumSQL = `select ${summ} from projects where time between DATE_SUB(NOW(), INTERVAL ${value} MINUTE) and now();`
             conn.query(sumSQL, function (err, results) {
                 if (err) throw err;
                 /*results.forEach(function (value1,index1) {
@@ -35,41 +32,41 @@ setTimeout(()=>console.log("sq"),5000);
                 Object.keys(results).forEach(function (key) {
                     row = results[key];
                 });
-                console.log(row);
-
+                //console.log(row);
                 switch (value) {
-                    case 3:
+                    case 10:
                         data.forEach(function (value1, index1) {
                             value1.ten = row[`${value1.number}`];
+                            //console.log(value1.ten);
                         });
                         break;
-                    case 12:
+                    case 60:
                         data.forEach(function (value1, index1) {
                             value1.hour1 = row[`${value1.number}`];
                         });
                         break;
-                    case 36:
+                    case 180:
                         data.forEach(function (value1, index1) {
                             value1.hour3 = row[`${value1.number}`];
                         });
                         break;
-                    case 72:
+                    case 360:
                         data.forEach(function (value1, index1) {
                             value1.hour6 = row[`${value1.number}`];
                         });
                         break;
-                    case 144:
+                    case 720:
                         data.forEach(function (value1, index1) {
                             value1.hour12 = row[`${value1.number}`];
                         });
                         break;
-                    case 288:
+                    case 1440:
                         data.forEach(function (value1, index1) {
                             value1.hour24 = row[`${value1.number}`];
                         });
                         break;
                 }
-                console.log(data);
+                //console.log(data);
             });
         });
 
@@ -87,23 +84,23 @@ setTimeout(()=>console.log("sq"),5000);
     const sqlVal = "SELECT * FROM (SELECT * FROM `projects` ORDER BY id DESC LIMIT 0 , 1) t ORDER BY id ASC;";
     conn.query(sqlVal, function (err, results) {
         console.log(results);
-        if(results.length != 0 )
-        Object.keys(results).forEach(function (key) {
-            row = results[key];
-        });
+        if (results.length != 0)
+            Object.keys(results).forEach(function (key) {
+                row = results[key];
+            });
         else
             row = 0;
     });
+
     function parse($) {
         data[index].suffrage = $(".votes-count").find("strong").html();
         console.log("finish" + index);
         let value = 0;
         //console.log(row);
-        if(row != 0)
-        {
-            console.log(row[`pr${data[index].number}`]);
+        if (row != 0) {
+            //console.log(row[`pr${data[index].number}`]);
             value = data[index].suffrage - row[`pr${data[index].number}`];
-            console.log(data[index].suffrage);
+            //console.log(data[index].suffrage);
         }
         //console.log(data.length);
         if (index == (data.length - 1)) {
@@ -121,6 +118,7 @@ setTimeout(()=>console.log("sq"),5000);
         }
 
     }
+
     request(options).then(parse).catch(function (err) {
         console.log("Произошла ошибка: " + err);
     })
@@ -129,3 +127,6 @@ setTimeout(()=>console.log("sq"),5000);
 parserHTML();
 setInterval(parserHTML, 300000);
 module.exports = data;
+/*
+* select pr732 from projects where time between DATE_SUB(NOW(), INTERVAL 100 MINUTE) and now()*/
+;
