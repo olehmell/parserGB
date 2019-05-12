@@ -129,32 +129,3 @@ setTimeout(()=>console.log("sq"),5000);
 parserHTML();
 setInterval(parserHTML, 300000);
 module.exports = data;
-
-//value1.suffrage = __$(".status").text();
-/*SELECT SUM(pr732),SUM(pr2095)
-   FROM (SELECT *
-      FROM `projects` ORDER BY id DESC LIMIT 0 , 6) t
-ORDER BY id ASC;
-"SELECT SUM(pr732) as '732',SUM(pr732) as '7327' FROM (SELECT * FROM projects ORDER BY id DESC LIMIT 0 , 6) t ORDER BY id ASC;"
- switch (value) {
-                        case 2:
-                            data[index].ten = value1;
-                            break;
-                        case 12:
-                            data[index].hour1 = value1;
-                            break;
-                        case 36:
-                            data[index].hour3 = value1;
-                            break;
-                        case 72:
-                            data[index].hour6 = value1;
-                            break;
-                        case 144:
-                            data[index].hour = value1;
-                            break;
-                        case 288:
-                            data[index].ten = value1;
-                            break;
-                    }
-
-                     SELECT * FROM (SELECT * FROM `projects` ORDER BY id DESC LIMIT 0 , 1) t ORDER BY id ASC;*/
