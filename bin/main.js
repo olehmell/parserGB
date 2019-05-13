@@ -21,7 +21,7 @@ function parserHTML() {
         const time = [10, 60, 180, 360, 720, 1440];
         time.forEach(function (value, index) {
             //const sumSQL = `SELECT ${summ} FROM (SELECT * FROM projects ORDER BY id DESC LIMIT 0 , ${value}) t ORDER BY id ASC;`
-            const sumSQL = `select ${summ} from projects where time between DATE_SUB(NOW(), INTERVAL ${value} MINUTE) and now();`
+            const sumSQL = `select ${summ} from projects where time between DATE_SUB(NOW() - INTERVAL ${value} MINUTE) and now();`
             conn.query(sumSQL, function (err, results) {
                 if (err) throw err;
                 /*results.forEach(function (value1,index1) {
