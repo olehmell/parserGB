@@ -22,9 +22,9 @@ conn.connect(function(err) {
 
     //console.log(table);
 
-    //const delet = "drop table projects;"
+    //const show = "drop table projects;"
     //const show = "select * from projects;"
-    //conn.query(delet,(err,result) => console.log(result))
+    //conn.query(show,(err,result) => console.log(result))
     const sql0 = "SHOW TABLES LIKE 'projects';"
     function createTable()
     {
@@ -34,7 +34,7 @@ conn.connect(function(err) {
             table +=  `pr${value1.number} INT not null DEFAULT 0,`;
         });
         const sql2 = "CREATE TABLE projects" +
-            " (Id INT not null AUTO_INCREMENT, " + table + "time DATETIME DEFAULT CURRENT_TIMESTAMP," +
+            " (Id INT not null AUTO_INCREMENT, " + table + "time DATETIME DEFAULT NOW()," +
             " PRIMARY KEY (Id) )";
         conn.query(sql2, function(err, results) {
             if (err) throw err;

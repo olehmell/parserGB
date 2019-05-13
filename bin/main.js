@@ -125,7 +125,7 @@ function parserHTML() {
 };
 
 parserHTML();
-setInterval(parserHTML, 300000);
+setInterval(parserHTML, 1500000);
 module.exports = data;
 /*
 * select pr732 from projects where time between DATE_SUB(NOW(), INTERVAL 100 MINUTE) and now()*/
