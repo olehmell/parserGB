@@ -1,10 +1,10 @@
 const mysql = require('mysql');
 const fs = require('fs');
 const conn = mysql.createConnection({
-    database: 'dbforgb',
-    host: "localhost",
-    user: "root",
-    password: "admin"
+    database: 'n2ovimf1jzve94ea',
+    host: "r6ze0q02l4me77k3.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
+    user: "t7oq2hbkkg3z1h6f",
+    password: "xxm0eeqo5gfi7pn1"
 });
 /*
 /*
@@ -13,7 +13,7 @@ const conn = mysql.createConnection({
     user: "t7oq2hbkkg3z1h6f",
     password: "xxm0eeqo5gfi7pn1"
     */
-const dataPages = ["test.json"]
+const dataPages = ["project.json"]
 conn.connect(function (err) {
     if (err) {
         throw err;

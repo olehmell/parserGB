@@ -8,7 +8,7 @@ const usersRouter = require('./routes/users');
 const app = express();
 
 //server
-const parser = require('./bin/main');
+let parser = require('./bin/main');
 app.get('/', function (req, res) {
   res.render('index', {data: parser});
 });

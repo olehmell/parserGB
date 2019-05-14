@@ -1,7 +1,7 @@
 var request = require("request-promise"),
     cheerio = require("cheerio"), fs = require('fs'), conn = require('./db');
 ;
-var data = JSON.parse(fs.readFileSync('views/test.json'));
+var data = JSON.parse(fs.readFileSync('views/project.json'));
 //console.log(data);
 
 
@@ -37,7 +37,7 @@ function parserHTML() {
         const time = [10, 60, 180, 360, 720, 1440];
         time.forEach(function (value, index) {
             //const sumSQL = `SELECT ${summ} FROM (SELECT * FROM projects ORDER BY id DESC LIMIT 0 , ${value}) t ORDER BY id ASC;`
-            const sumSQL = `select ${summ} from projects where time between DATE_SUB(NOW() - INTERVAL ${value} MINUTE) and now();`
+            const sumSQL = `select ${summ} from projects where time between DATE_SUB(NOW(),INTERVAL ${value} MINUTE) and NOW();`
             conn.query(sumSQL, function (err, results) {
                 if (err) throw err;
                 /*results.forEach(function (value1,index1) {
@@ -110,7 +110,9 @@ function parserHTML() {
     }
     function parse($) {
         data[index].suffrage = $(".votes-count").find("strong").html();
-        data[index].amount = $(".amount").find("strong").text().split("г",1);
+        let amount = $(".amount").find("strong").text().split(" ",2);
+        console.log(amount);
+        data[index].amount = amount[0] + amount[1];
         //console.log(data[index].amount);
         console.log("finish" + index);
         let value = 0;
