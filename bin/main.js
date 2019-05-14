@@ -2,7 +2,6 @@ var request = require("request-promise"),
     cheerio = require("cheerio"), fs = require('fs'), conn = require('./db');
 ;
 var data = JSON.parse(fs.readFileSync('views/test.json'));
-
 //console.log(data);
 
 
@@ -17,7 +16,24 @@ function parserHTML() {
             if (err) throw err;
             console.log("insert to finish");
         });
+        const sqlSelect = `SELECT * from projects`;
+        conn.query(sqlSelect,function (err,result) {
 
+            data.forEach(function (valueD,indexD) {
+                let mass = [];
+                let massSUM = [];
+                result.forEach(function (value,index)
+                {
+                    //console.log(value[`pr${valueD.number}`]);
+                    massSUM.push(value[`pr${valueD.number}rage`])
+                    mass.push(value[`pr${valueD.number}`]);
+                });
+                valueD.data = mass;
+                valueD.dataSUM = massSUM;
+                //console.log("-------------");
+            })
+            //console.log(data);
+        })
         const time = [10, 60, 180, 360, 720, 1440];
         time.forEach(function (value, index) {
             //const sumSQL = `SELECT ${summ} FROM (SELECT * FROM projects ORDER BY id DESC LIMIT 0 , ${value}) t ORDER BY id ASC;`
@@ -74,12 +90,7 @@ function parserHTML() {
     }
 
     let index = 0;
-    let options = {
-        uri: data[index].link,
-        transform: function (body) {
-            return cheerio.load(body);
-        }
-    }
+
     let row = null;
     const sqlVal = "SELECT * FROM (SELECT * FROM `projects` ORDER BY id DESC LIMIT 0 , 1) t ORDER BY id ASC;";
     conn.query(sqlVal, function (err, results) {
@@ -91,9 +102,16 @@ function parserHTML() {
         else
             row = 0;
     });
-
+    let options = {
+        uri: data[index].link,
+        transform: function (body) {
+            return cheerio.load(body);
+        }
+    }
     function parse($) {
         data[index].suffrage = $(".votes-count").find("strong").html();
+        data[index].amount = $(".amount").find("strong").text().split("г",1);
+        //console.log(data[index].amount);
         console.log("finish" + index);
         let value = 0;
         //console.log(row);
@@ -104,14 +122,14 @@ function parserHTML() {
         }
         //console.log(data.length);
         if (index == (data.length - 1)) {
-            vall += `'${value}'`;
-            arr += `pr${data[index].number}`;
+            vall += `'${value}','${data[index].suffrage}'`;
+            arr += `pr${data[index].number},pr${data[index].number}rage`;
             summ += `SUM(pr${data[index].number}) as '${data[index].number}'`;
             console.log("insert start");
             insert();
         } else {
-            arr += `pr${data[index].number}, `;
-            vall += `'${value}',`;
+            arr += `pr${data[index].number},pr${data[index].number}rage,`;
+            vall += `'${value}','${data[index].suffrage}',`;
             summ += `SUM(pr${data[index].number}) as '${data[index].number}',`;
             options.uri = data[++index].link;
             request(options).then(parse);
@@ -125,8 +143,7 @@ function parserHTML() {
 };
 
 parserHTML();
-setInterval(parserHTML, 1500000);
+setInterval(parserHTML, 300000);
 module.exports = data;
 /*
 * select pr732 from projects where time between DATE_SUB(NOW(), INTERVAL 100 MINUTE) and now()*/
-;

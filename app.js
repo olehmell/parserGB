@@ -12,6 +12,9 @@ const parser = require('./bin/main');
 app.get('/', function (req, res) {
   res.render('index', {data: parser});
 });
+app.get('/select', function(req, res) {
+  res.json({ data: JSON.stringify(parser) });
+});
 //
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
