@@ -28,6 +28,7 @@ function parserHTML() {
                     massSUM.push(value[`pr${valueD.number}rage`])
                     mass.push(value[`pr${valueD.number}`]);
                 });
+                massSUM.shift();
                 valueD.data = mass;
                 valueD.dataSUM = massSUM;
                 //console.log("-------------");
