@@ -142,8 +142,6 @@ function parserHTML() {
 
     request(options).then(parse).catch(function (err) {
         console.log("Произошла ошибка: " + err);
-        index--;
-        parse();
     })
     const sqlVal = "SELECT * FROM (SELECT * FROM `projects` ORDER BY id DESC LIMIT 0 , 1) t ORDER BY id ASC;";
     conn.query(sqlVal, function (err, results) {
