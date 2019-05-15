@@ -7,7 +7,7 @@ var data = JSON.parse(fs.readFileSync('views/project.json'));
 
 function parserHTML() {
     let arr = "", vall = "", summ = "";
-
+    let row = 0;
     function insert() {
 
         const insertSql = `INSERT INTO projects(${arr})VALUES(${vall})`;
@@ -90,18 +90,6 @@ function parserHTML() {
     }
 
     let index = 0;
-
-    let row = null;
-    const sqlVal = "SELECT * FROM (SELECT * FROM `projects` ORDER BY id DESC LIMIT 0 , 1) t ORDER BY id ASC;";
-    conn.query(sqlVal, function (err, results) {
-        console.log(results);
-        if (results.length != 0)
-            Object.keys(results).forEach(function (key) {
-                row = results[key];
-            });
-        else
-            row = 0;
-    });
     let options = {
         uri: data[index].link,
         transform: function (body) {
@@ -111,26 +99,26 @@ function parserHTML() {
     function parse($) {
         data[index].suffrage = $(".votes-count").find("strong").html();
         let amount = $(".amount").find("strong").text().split(" ");
-        console.log(amount);
+        //console.log(amount);
         data[index].amount = "";
         for (let i = 0; i < amount.length - 1;i++)
         {
             data[index].amount += amount[i];
         }
-        console.log(data[index].amount);
+        //console.log(data[index].amount);
         //console.log(data[index].amount);
         console.log("finish" + index);
         let value = 0;
-        console.log(data[index].suffrage);
-        console.log(row[`pr${data[index].number}rage`]);
+        //console.log(data[index].suffrage);
+        console.log(row);
         if (row != 0) {
             //console.log(row[`pr${data[index].number}`]);
             value = data[index].suffrage - row[`pr${data[index].number}rage`];
             //console.log(data[index].suffrage);
         }
         else
-            value = 0;
-        //console.log(data.length);
+            value = data[index].suffrage;
+        console.log(value);
         if (index == (data.length - 1)) {
             vall += `'${value}','${data[index].suffrage}'`;
             arr += `pr${data[index].number},pr${data[index].number}rage`;
@@ -150,6 +138,16 @@ function parserHTML() {
     request(options).then(parse).catch(function (err) {
         console.log("Произошла ошибка: " + err);
     })
+    const sqlVal = "SELECT * FROM (SELECT * FROM `projects` ORDER BY id DESC LIMIT 0 , 1) t ORDER BY id ASC;";
+    conn.query(sqlVal, function (err, results) {
+        console.log(results);
+        if (results.length != 0)
+            Object.keys(results).forEach(function (key) {
+                row = results[key];
+            });
+        else
+            row = 0;
+    });
 };
 
 parserHTML();

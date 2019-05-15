@@ -68,7 +68,7 @@
   {
     "number": "2013",
     "name": "Студвесна",
-    "link": "https://gb.kyivcity.gov.ua/projects/11/1661",
+    "link": "https://gb.kyivcity.gov.ua/projects/11/2013",
     "suffrage": "0"
   },
   {
@@ -93,6 +93,30 @@
     "number": "2134",
     "name": "Науковий сквер",
     "link": "https://gb.kyivcity.gov.ua/projects/11/2134",
+    "suffrage": "0"
+  },
+  {
+    "number":"45",
+    "name": "Radioday",
+    "link": "https://gb.kyivcity.gov.ua/projects/11/45",
+    "suffrage": "0"
+  },
+  {
+    "number": "1048",
+    "name": "Медичне обладнання",
+    "link": "https://gb.kyivcity.gov.ua/projects/11/1048",
+    "suffrage": "0"
+  },
+  {
+    "number": "1082",
+    "name": "ЕКОпарк",
+    "link": "https://gb.kyivcity.gov.ua/projects/11/1082",
+    "suffrage": "0"
+  },
+  {
+    "number": "1112",
+    "name": "Shigfest",
+    "link": "https://gb.kyivcity.gov.ua/projects/11/1112",
     "suffrage": "0"
   }
 ]
