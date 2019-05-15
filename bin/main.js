@@ -117,7 +117,11 @@ function parserHTML() {
             //console.log(data[index].suffrage);
         }
         else
+        {
             value = data[index].suffrage;
+            row = 1;
+        }
+
         console.log(value);
         if (index == (data.length - 1)) {
             vall += `'${value}','${data[index].suffrage}'`;
@@ -146,7 +150,7 @@ function parserHTML() {
                 row = results[key];
             });
         else
-            row = 0;
+            row = 1;
     });
 };
 
