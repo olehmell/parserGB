@@ -16,7 +16,7 @@ conn.connect(function(err) {
     const data = JSON.parse(fs.readFileSync('views/project.json'));
     let table = "";
     data.forEach(function (value1,index) {
-         table +=  `pr${value1.number} INT not null DEFAULT 0,`;
+         table +=  `pr${value1.number} INT not null,`;
     });
     //console.log(table);
     const sql2 = "CREATE TABLE projects" +
