@@ -21,10 +21,10 @@ conn.connect(function (err) {
     console.log("Connected!");
 
     //console.log(table);
-    //const sql = "drop table projects;"
+    const sql = "drop table projects;"
     //const sql = "select * from projects;"
     //const sql = "ALTER TABLE projects ADD pr3333 INT NULL default 0;";
-    //conn.query(sql,(err,result) => console.log(result))
+    conn.query(sql,(err,result) => console.log(result))
     const sql0 = "SHOW TABLES LIKE 'projects';"
     function createTable() {
         let table = "";
