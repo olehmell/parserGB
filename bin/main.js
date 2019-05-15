@@ -122,10 +122,10 @@ function parserHTML() {
         console.log("finish" + index);
         let value = 0;
         console.log(data[index].suffrage);
-        console.log(row[`pr${data[index].number}`]);
-        if (data[index].suffrage != row[`pr${data[index].number}`] && row != 0) {
+        console.log(row[`pr${data[index].number}rage`]);
+        if (row != 0) {
             //console.log(row[`pr${data[index].number}`]);
-            value = data[index].suffrage - row[`pr${data[index].number}`];
+            value = data[index].suffrage - row[`pr${data[index].number}rage`];
             //console.log(data[index].suffrage);
         }
         else
