@@ -4,9 +4,9 @@ $(".sortUp").on("click",function () {
     let $this = $(this);
     let valClass = ($this.parent());
     $this.toggleClass("down");
-    $(".hide").remove();
+    //$(".hide").remove();
     console.log(valClass[0].className.split(' ')[2]);
-    sort(valClass[0].className.split(' ')[2], $this.hasClass('down'),2);
+    sort(valClass[0].className.split(' ')[2], $this.hasClass('down'),10);
 });
 function sort(valClass,down,sub) {
     let elements = $(".sort_rows");

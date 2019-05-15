@@ -24,17 +24,19 @@
 
         .table_project {
             overflow-x: hidden;
-            font-size: 22px;
+            font-size: 14px;
             margin-left: 5%;
             margin-right: 5%;
             width: 90%;
         }
 
         img {
-            height: 40px;
-            width: 40px;
+            height: 30px;
+            width: 30px;
         }
-
+        .z{
+            font-size: 16px;
+        }
         .reload {
             position: fixed;
             left: 25px;
@@ -50,7 +52,6 @@
         .down {
             transform: rotate(180deg);
         }
-
         @media (min-width: 500px) and (max-width: 900px) {
             .table_project {
                 overflow-x: hidden;
@@ -86,30 +87,29 @@
 </head>
 <body>
 <div class="table_project">
-    <h2 class="friend text-center">Проекти команди НАУ</h2>
-    <hr>
+    <h5 class="friend text-center">Проекти команди НАУ</h5>
+    <hr class="px-0 py-1 mx-0 my-0">
     <div class="row">
-        <div class="col-1 text-center number">№</div>
-        <div class="col-3 pr-0 amount">Назва<br/>Бюджет
+        <div class="col-1 text-center number z">№</div>
+        <div class="col-3 pr-0 amount z">Назва<br/>Бюджет
             <img src="../images/iconfinder_chevron-circle-down_1608620.svg" class="sortUp" alt="sort"></div>
-        <div class="col-1 pl-0 full_info mr-2 text-center">Всього
+        <div class="col-1 pl-0 full_info mr-2 text-center z">Всього
             <img src="../images/iconfinder_chevron-circle-down_1608620.svg" class="sortUp" alt="sort">
         </div>
-        <div class="col-1 pl-0 10min_info text-center ">10хв
+        <div class="col-1 pl-0 10min_info text-center z">10хв
             <img src="../images/iconfinder_chevron-circle-down_1608620.svg" class="sortUp" alt="sort"></div>
-        <div class="col-1 pl-0 1h_info text-center ">1год
+        <div class="col-1 pl-0 1h_info text-center z">1год
             <img src="../images/iconfinder_chevron-circle-down_1608620.svg" class="sortUp" alt="sort"></div>
-        <div class="col-1 pl-0 3h_info text-center">3год
+        <div class="col-1 pl-0 3h_info text-center z">3год
             <img src="../images/iconfinder_chevron-circle-down_1608620.svg" class="sortUp" alt="sort"></div>
-        <div class="col-1 pl-0 6h_info text-center">6год
+        <div class="col-1 pl-0 6h_info text-center z">6год
             <img src="../images/iconfinder_chevron-circle-down_1608620.svg" class="sortUp" alt="sort"></div>
-        <div class="col-1 pl-0 12h_info text-center">12год
+        <div class="col-1 pl-0 12h_info text-center z">12год
             <img src="../images/iconfinder_chevron-circle-down_1608620.svg" class="sortUp" alt="sort"></div>
-        <div class="col-1 pl-0 24h_info text-center">24год
+        <div class="col-1 pl-0 24h_info text-center z">24год
             <img src="../images/iconfinder_chevron-circle-down_1608620.svg" class="sortUp" alt="sort"></div>
-
     </div>
-    <hr>
+    <hr class="px-0 py-1 mx-0 my-0">
     <% data.forEach(function (value1, index) { %>
     <div class="row sort_rows">
         <div class="col-1 number"><%= value1.number %></div>
@@ -122,12 +122,11 @@
         <div class="col-1 text-center pl-0 6h_info"><%= value1.hour6 %></div>
         <div class="col-1 text-center pl-0 12h_info"><%= value1.hour12 %></div>
         <div class="col-1 text-center pl-0 24h_info"><%= value1.hour24 %></div>
-
     </div>
-    <hr>
+    <hr class="px-0 py-1 mx-0 my-0">
     <% if(index == 11) { %>
-    <h2 class="friend hide text-center">Дружні проекти</h2>
-    <hr class="friend hide">
+    <h5 class="friend hide text-center">Дружні проекти</h5>
+    <hr class="px-0 py-1 mx-0 my-0 hide">
     <% } %>
     <% }); %>
 </div>

@@ -100,11 +100,11 @@ function parserHTML() {
         data[index].suffrage = $(".votes-count").find("strong").html();
         let amount = $(".amount").find("strong").text().split(" ");
         //console.log(amount);
-        data[index].amount = "";
-        for (let i = 0; i < amount.length - 1;i++)
+        data[index].amount = amount;
+        /*for (let i = 0; i < amount.length - 1;i++)
         {
             data[index].amount += amount[i];
-        }
+        }*/
         //console.log(data[index].amount);
         //console.log(data[index].amount);
         console.log("finish" + index);
