@@ -121,12 +121,14 @@ function parserHTML() {
         //console.log(data[index].amount);
         console.log("finish" + index);
         let value = 0;
-        //console.log(row);
-        if (row != 0) {
+        console.log(row);
+        if (data[index].suffrage != row[`pr${data[index].number}`] && row != 0) {
             //console.log(row[`pr${data[index].number}`]);
             value = data[index].suffrage - row[`pr${data[index].number}`];
             //console.log(data[index].suffrage);
         }
+        else
+            value = 0;
         //console.log(data.length);
         if (index == (data.length - 1)) {
             vall += `'${value}','${data[index].suffrage}'`;
