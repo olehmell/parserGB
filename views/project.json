@@ -1,87 +1,142 @@
 [
-{
-"number": "2095",
-"name": "Соломафест",
-"link": "https://gb.kyivcity.gov.ua/projects/11/2095",
-"suffrage": "0"
-},
-{
-"number": "732",
-"name": "Арт-фестиваль «Повидло»",
-"link": "https://gb.kyivcity.gov.ua/projects/11/732",
-"suffrage": "0"
-},
-{
-"number": "2151",
-"name": "Robot Made Challenge",
-"link": "https://gb.kyivcity.gov.ua/projects/11/2151",
-"suffrage": "0"
-},
-{
-"number": "1890",
-"name": "Інженерний хакатон",
-"link": "https://gb.kyivcity.gov.ua/projects/11/1890",
-"suffrage": "0"
-},
-{
-"number": "1901",
-"name": "Медіастудія",
-"link": "https://gb.kyivcity.gov.ua/projects/11/1901",
-"suffrage": "0"
-},
-{
-"number": "2203",
-"name": "Медіашкола",
-"link": "https://gb.kyivcity.gov.ua/projects/11/2203",
-"suffrage": "0"
-},
-{
-"number": "1942",
-"name": "Practical CyberSecurity Days",
-"link": "https://gb.kyivcity.gov.ua/projects/11/1942",
-"suffrage": "0"
-},
-{
-"number": "2031",
-"name": "Cybersecurity training center",
-"link": "https://gb.kyivcity.gov.ua/projects/11/2031",
-"suffrage": "0"
-},
-{
-"number": "2002",
-"name": "Ракета",
-"link": "https://gb.kyivcity.gov.ua/projects/11/2002",
-"suffrage": "0"
-},
-{
-"number": "1300",
-"name": "AirZoom",
-"link": "https://gb.kyivcity.gov.ua/projects/11/1300",
-"suffrage": "0"
-},
-{
-"number": "1661",
-"name": "Кіберчемпіонат",
-"link": "https://gb.kyivcity.gov.ua/projects/11/1661",
-"suffrage": "0"
-},
-{
-"number": "2091",
-"name": "Дружній проект",
-"link": "https://gb.kyivcity.gov.ua/projects/11/668",
-"suffrage": "0"
-},
-{
-"number": "2099",
-"name": "Дружній проект",
-"link": "https://gb.kyivcity.gov.ua/projects/11/1300",
-"suffrage": "0"
-},
-{
-"number": "2096",
-"name": "Дружній проект",
-"link": "https://gb.kyivcity.gov.ua/projects/11/668",
-"suffrage": "0"
-}
-
+  {
+    "number": "2095",
+    "name": "Соломафест",
+    "link": "https://gb.kyivcity.gov.ua/projects/11/2095",
+    "amount": "2050000",
+    "suffrage": "0"
+  },
+  {
+    "number": "732",
+    "name": "Арт-фестиваль «Повидло»",
+    "link": "https://gb.kyivcity.gov.ua/projects/11/732",
+    "amount": "412800",
+    "suffrage": "0"
+  },
+  {
+    "number": "2013",
+    "name": "Студвесна",
+    "link": "https://gb.kyivcity.gov.ua/projects/11/2013",
+    "amount": "375400",
+    "suffrage": "0"
+  },
+  {
+    "number": "1300",
+    "name": "AirZoom",
+    "link": "https://gb.kyivcity.gov.ua/projects/11/1300",
+    "amount": "323000",
+    "suffrage": "0"
+  },
+  {
+    "number": "1901",
+    "name": "Медіастудія",
+    "link": "https://gb.kyivcity.gov.ua/projects/11/1901",
+    "amount": "300939",
+    "suffrage": "0"
+  },
+  {
+    "number": "1661",
+    "name": "Кіберчемпіонат",
+    "link": "https://gb.kyivcity.gov.ua/projects/11/1661",
+    "amount": "199950",
+    "suffrage": "0"
+  },
+  {
+    "number": "2031",
+    "name": "Cybersecurity training center",
+    "link": "https://gb.kyivcity.gov.ua/projects/11/2031",
+    "amount": "197760",
+    "suffrage": "0"
+  },
+  {
+    "number": "1890",
+    "name": "Інженерний хакатон",
+    "link": "https://gb.kyivcity.gov.ua/projects/11/1890",
+    "amount": "196080",
+    "suffrage": "0"
+  },
+  {
+    "number": "2002",
+    "name": "Ракета",
+    "link": "https://gb.kyivcity.gov.ua/projects/11/2002",
+    "amount": "180457",
+    "suffrage": "0"
+  },
+  {
+    "number": "2151",
+    "name": "Robot Made Challenge",
+    "link": "https://gb.kyivcity.gov.ua/projects/11/2151",
+    "amount": "145316",
+    "suffrage": "0"
+  },
+  {
+    "number": "1942",
+    "name": "Practical CyberSecurity Days",
+    "link": "https://gb.kyivcity.gov.ua/projects/11/1942",
+    "amount": "112800",
+    "suffrage": "0"
+  },
+  {
+    "number": "2203",
+    "name": "Медіашкола",
+    "link": "https://gb.kyivcity.gov.ua/projects/11/2203",
+    "amount": "104585",
+    "suffrage": "0"
+  },
+  {
+    "number": "1231",
+    "name": "Пілотажний клас(КПДЮ)",
+    "link": "https://gb.kyivcity.gov.ua/projects/11/1231",
+    "amount": "227700",
+    "suffrage": "0"
+  },
+  {
+    "number": "2100",
+    "name": "Рік науки",
+    "link": "https://gb.kyivcity.gov.ua/projects/11/2100",
+    "amount": "357600",
+    "suffrage": "0"
+  },
+  {
+    "number": "2051",
+    "name": "Інтерактивні уроки",
+    "link": "https://gb.kyivcity.gov.ua/projects/11/2051",
+    "amount": "300625",
+    "suffrage": "0"
+  },
+  {
+    "number": "2134",
+    "name": "Науковий сквер",
+    "link": "https://gb.kyivcity.gov.ua/projects/11/2134",
+    "amount": "1962120",
+    "suffrage": "0"
+  },
+  {
+    "number":"45",
+    "name": "Radioday",
+    "link": "https://gb.kyivcity.gov.ua/projects/11/45",
+    "amount": "2496000",
+    "suffrage": "0"
+  },
+  {
+    "number": "1048",
+    "name": "Медичне обладнання",
+    "link": "https://gb.kyivcity.gov.ua/projects/11/1048",
+    "amount": "1489000",
+    "suffrage": "0"
+  },
+  {
+    "number": "1082",
+    "name": "ЕКОпарк",
+    "link": "https://gb.kyivcity.gov.ua/projects/11/1082",
+    "amount": "1640000",
+    "suffrage": "0"
+  },
+  {
+    "number": "1112",
+    "name": "Shigfest",
+    "link": "https://gb.kyivcity.gov.ua/projects/11/1112",
+    "amount": "1598000",
+    "suffrage": "0"
+  }
 ]

@@ -1,54 +1,127 @@
-var request = require("request"),
-    cheerio = require("cheerio"),fs = require('fs'), conn = require('./db');;
-var data;
+var request = require("request-promise"),
+    cheerio = require("cheerio"), fs = require('fs'), conn = require('./db');
+;
+var data = JSON.parse(fs.readFileSync('views/project.json'));
 
-function parseHTML()
-{
-   data = JSON.parse(fs.readFileSync('views/test.json'));
-    //console.log(data);
-    let arr = "";
-    let vall = "";
-    function insert()
-    {
-        const sql = `INSERT INTO projects(${arr})VALUES(${vall})`;
-        console.log(sql);
-            conn.query(sql, function(err, results) {
-                if (err) throw err;
-                console.log("insert to finish");
-            });
+//console.log(data);
 
-    }
+function parserHTML() {
+    let arr = "", vall = "";
     data.forEach(function (value1, index) {
-        request(value1.link, function (error, response, body) {
-            if (!error) {
-                var __$ = cheerio.load(body);
-                value1.suffrage = __$(".votes-count").find("strong").html();
-                if(index == (data.length-1))
-                {
-                    setTimeout(function () {
-                        vall += `'${value1.suffrage}'`;
-                        arr += `pr${value1.number}`;
-                        console.log(vall);
-                        console.log(arr);
-                        insert();
-                    },1000);
-                    //insert();
-                }
-                else
-                {
-                    arr += `pr${value1.number}, `;
-                    vall += `'${value1.suffrage}',`;
-                }
-
-
-                //value1.suffrage = __$(".status").text();
-            } else {
-                console.log("Произошла ошибка: " + error);
-            }
-        });
+        if (index == data.length - 1)
+            arr += `pr${data[index].number}`;
+        else
+            arr += `pr${data[index].number},`;
     });
 
-}
-parseHTML();
-setInterval(parseHTML,10000);
+    function insert() {
+
+        const insertSql = `INSERT INTO projects(${arr})VALUES(${vall})`;
+        console.log(insertSql);
+        conn.query(insertSql, function (err, results) {
+            if (err) throw err;
+            console.log("insert to finish");
+        });
+        const time = [3, 12, 36, 72, 144, 288];
+        time.forEach(function (value, index) {
+            const sumSQL = `SELECT * FROM (SELECT * FROM projects ORDER BY id DESC LIMIT 0 , ${value}) t ORDER BY id ASC;`
+            //console.log(sumSQL);
+            conn.query(sumSQL, function (err, results) {
+                if (err) throw err;
+                //console.log(results);
+                //console.log(results[results.length-1]);
+                //console.log(row);
+                switch (value) {
+                    case 3:
+                        data.forEach(function (value1, index1) {
+                            value1.ten = (results[results.length - 1][`pr${value1.number}`] - results[0][`pr${value1.number}`]);
+                            //console.log(value1.ten);
+                        });
+                        break;
+                    case 12:
+                        data.forEach(function (value1, index1) {
+                            value1.hour1 = (results[results.length - 1][`pr${value1.number}`] - results[0][`pr${value1.number}`]);
+                        });
+                        break;
+                    case 36:
+                        data.forEach(function (value1, index1) {
+                            value1.hour3 = (results[results.length - 1][`pr${value1.number}`] - results[0][`pr${value1.number}`]);
+                        });
+                        break;
+                    case 72:
+                        data.forEach(function (value1, index1) {
+                            value1.hour6 = (results[results.length - 1][`pr${value1.number}`] - results[0][`pr${value1.number}`]);
+                        });
+                        break;
+                    case 144:
+                        data.forEach(function (value1, index1) {
+                            value1.hour12 = (results[results.length - 1][`pr${value1.number}`] - results[0][`pr${value1.number}`]);
+                        });
+                        break;
+                    case 288:
+                        data.forEach(function (value1, index1) {
+                            value1.hour24 = (results[results.length - 1][`pr${value1.number}`] - results[0][`pr${value1.number}`]);
+                        });
+                        break;
+                }
+                //console.log(data);
+            });
+        });
+
+        const sqlSelect = `SELECT *
+                           from projects`;
+        conn.query(sqlSelect, function (err, result) {
+            data.forEach(function (valueD, indexD) {
+                let mass = [];
+                let massSUM = [];
+                for (let index = 0; index < result.length; index +=12)
+                    massSUM.push(result[index][`pr${valueD.number}`]);
+                for (let time = 1; time < result.length; time += 12)
+                    mass.push(result[time][`pr${valueD.number}`] - result[time - 1][`pr${valueD.number}`]);
+                //mass.shift();
+                valueD.data = mass;
+                valueD.dataSUM = massSUM;
+                //console.log("-------------");
+            })
+            //console.log(data);
+        })
+    }
+
+    let index = 0;
+    let options = {
+        uri: data[index].link,
+        transform: function (body) {
+            return cheerio.load(body);
+        }
+    }
+
+    function parse($) {
+        data[index].suffrage = $(".votes-count").find("strong").html();
+        console.log("finish" + index);
+        if (index == (data.length - 1)) {
+            vall += `'${data[index].suffrage}'`;
+            console.log("insert start");
+            insert();
+        } else {
+            vall += `'${data[index].suffrage}',`;
+            options.uri = data[++index].link;
+            request(options).then(parse).catch(function (err) {
+                if (index == (data.length - 1))
+                    vall += `'${data[index].suffrage}'`;
+                else
+                    vall += `'${data[index].suffrage}',`;
+                console.log("Произошла ошибка: " + err)
+            });
+        }
+
+    }
+
+    request(options).then(parse).catch(function (err) {
+        vall += `'${data[index].suffrage}'`;
+        console.log("Произошла ошибка: " + err);
+    })
+};
+
+parserHTML();
+setInterval(parserHTML, 300000);
 module.exports = data;
