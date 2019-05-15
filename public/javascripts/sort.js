@@ -1,5 +1,5 @@
 //$(".reload").on("click",()=>location.reload());
-$(document).ready(sort("amount", true, 10));
+//$(document).ready(sort("amount", true, 9));
 $(".sortUp").on("click",function () {
     let $this = $(this);
     let valClass = ($this.parent());
@@ -20,6 +20,7 @@ function sort(valClass,down,sub) {
         {
             elements[i].replaceWith(elementSort[i+1]);
         }
+        console.log(elements);
     }
     else
     {
@@ -29,6 +30,7 @@ function sort(valClass,down,sub) {
         {
             elements[i].replaceWith(elementSort[i]);
         }
+        console.log(elements);
     }
 
 

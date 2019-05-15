@@ -119,7 +119,6 @@ function parserHTML() {
         else
         {
             value = data[index].suffrage;
-            row = 1;
         }
 
         console.log(value);
@@ -134,13 +133,16 @@ function parserHTML() {
             vall += `'${value}','${data[index].suffrage}',`;
             summ += `SUM(pr${data[index].number}) as '${data[index].number}',`;
             options.uri = data[++index].link;
-            request(options).then(parse);
+            request(options).then(parse).catch(function (err) {
+                console.log("Произошла ошибка: " + err)});
         }
 
     }
 
     request(options).then(parse).catch(function (err) {
         console.log("Произошла ошибка: " + err);
+        index--;
+        parse();
     })
     const sqlVal = "SELECT * FROM (SELECT * FROM `projects` ORDER BY id DESC LIMIT 0 , 1) t ORDER BY id ASC;";
     conn.query(sqlVal, function (err, results) {
@@ -150,7 +152,7 @@ function parserHTML() {
                 row = results[key];
             });
         else
-            row = 1;
+            row = 0;
     });
 };
 
