@@ -1,5 +1,5 @@
 //$(".reload").on("click",()=>location.reload());
-$(document).ready(sort("amount", true, 5));
+$(document).ready(sort("amount", true, 6));
 $(".sortUp").on("click",function () {
     let $this = $(this);
     let valClass = ($this.parent());

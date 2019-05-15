@@ -13,7 +13,7 @@ const conn = mysql.createConnection({
     user: "t7oq2hbkkg3z1h6f",
     password: "xxm0eeqo5gfi7pn1"
     */
-const dataPages = ["test.json"]
+const dataPages = ["project.json"]
 conn.connect(function (err) {
     if (err) {
         throw err;

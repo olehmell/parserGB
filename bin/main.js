@@ -1,7 +1,7 @@
 var request = require("request-promise"),
     cheerio = require("cheerio"), fs = require('fs'), conn = require('./db');
 ;
-var data = JSON.parse(fs.readFileSync('views/test.json'));
+var data = JSON.parse(fs.readFileSync('views/project.json'));
 //console.log(data);
 
 
@@ -110,9 +110,14 @@ function parserHTML() {
     }
     function parse($) {
         data[index].suffrage = $(".votes-count").find("strong").html();
-        let amount = $(".amount").find("strong").text().split(" ",2);
-        console.log(data[index].name);
-        data[index].amount = amount[0] + amount[1];
+        let amount = $(".amount").find("strong").text().split(" ");
+        console.log(amount);
+        data[index].amount = "";
+        for (let i = 0; i < amount.length - 1;i++)
+        {
+            data[index].amount += amount[i];
+        }
+        console.log(data[index].amount);
         //console.log(data[index].amount);
         console.log("finish" + index);
         let value = 0;
