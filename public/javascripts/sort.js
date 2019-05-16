@@ -12,7 +12,7 @@ function sort(valClass,down) {
     if(!down)
     {
         elementSort = bubbleSortUp(elements.clone(),valClass,elements);
-        for (let i = 0; i < Object.keys(elements).length - 2;i++)
+        for (let i = 0; i < Object.keys(elements).length - 10;i++)
         {
             elements[i].replaceWith(elementSort[i+1]);
         }
@@ -20,7 +20,7 @@ function sort(valClass,down) {
     else
     {
         elementSort = bubbleSortDown(elements.clone(),valClass,elements);
-        for (let i = 0; i < Object.keys(elements).length - 2;i++)
+        for (let i = 0; i < Object.keys(elements).length - 10;i++)
         {
             elements[i].replaceWith(elementSort[i]);
         }
@@ -31,7 +31,7 @@ function sort(valClass,down) {
 }
 
 function bubbleSortUp(arr,valClass) {
-    for (let i = 0, endI = Object.keys(arr).length - 2; i < endI; i++) {
+    for (let i = 0, endI = Object.keys(arr).length - 10; i < endI; i++) {
         for (let j = 0, endJ = endI - i; j < endJ; j++) {
             if (Number($(arr[j]).find(`.${valClass}`).text()) > Number($(arr[j+1]).find(`.${valClass}`).text())) {
                 const swap = arr[j];
@@ -43,7 +43,7 @@ function bubbleSortUp(arr,valClass) {
     return arr;
 }
 function bubbleSortDown(arr,valClass) {
-    for (let i = 0, endI = Object.keys(arr).length - 2; i < endI; i++) {
+    for (let i = 0, endI = Object.keys(arr).length - 10; i < endI; i++) {
         for (let j = 0, endJ = endI - i; j < endJ; j++) {
             if (Number($(arr[j]).find(`.${valClass}`).text()) < Number($(arr[j+1]).find(`.${valClass}`).text())) {
                 const swap = arr[j];
