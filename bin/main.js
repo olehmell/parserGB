@@ -91,7 +91,6 @@ function insert() {
                 for (let time = 1; time < result.length; time += 3) {
                     mass.push(result[time][`pr${valueD.number}`] - result[time - 1][`pr${valueD.number}`]);
                 }
-                mass.splice(0, 2);
                 data[indexD].data = mass;
                 data[indexD].dataSUM = massSUM;
                 data[indexD].dataRg = massRg;
