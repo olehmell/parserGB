@@ -102,7 +102,7 @@ function insert() {
             //console.log(data);
         });
     });
-    setTimeout(start,3000000);
+    setTimeout(start,300000);
 }
 
 
