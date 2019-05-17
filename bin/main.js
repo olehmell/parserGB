@@ -2,93 +2,96 @@ var request = require("request-promise"),
     cheerio = require("cheerio"), fs = require('fs'), conn = require('./db');
 ;
 var data = JSON.parse(fs.readFileSync('views/project.json'));
-let chartData = [];
-//console.log(data);
 
-function parserHTML() {
-    console.log(Date());
-    let arr = "", vall = "";
-    data.forEach(function (value1, index) {
-        if (index == data.length - 1)
-            arr += `pr${data[index].number}`;
-        else
-            arr += `pr${data[index].number},`;
+function start() {
+    parse();
+    console.log(data);
+};
+
+function insert() {
+    let vall = [], arr = [];
+    data.forEach(function (valueD, index) {
+            if (index == (data.length - 1)) {
+                vall += `'${valueD.suffrage}'`;
+                arr += `pr${data[index].number}`;
+            } else
+            {
+                arr += `pr${data[index].number},`;
+                vall += `'${valueD.suffrage}',`;
+            }
+        }
+    );
+    console.log("insert");
+    const insertSql = `INSERT INTO projects (${arr}) VALUES(${vall});`;
+    console.log(insertSql);
+    conn.query(insertSql, function (err, results) {
+        if (err) throw err;
+        console.log("insert to finish");
     });
-
-    function insert() {
-
-        const insertSql = `INSERT INTO projects(${arr})VALUES(${vall})`;
-        console.log(insertSql);
-        conn.query(insertSql, function (err, results) {
+    const time = [3, 12, 36, 72, 144, 288];
+    time.forEach(function (value, index) {
+        console.log("run");
+        //const sumSQL = `select ${summ} from projects where time between DATE_SUB(NOW(),INTERVAL ${value} MINUTE) and NOW();`
+        const sumSQL = `SELECT * FROM (SELECT * FROM projects ORDER BY id DESC LIMIT 0 , ${value}) t ORDER BY id ASC;`
+        //console.log(sumSQL);
+        conn.query(sumSQL, function (err, results) {
             if (err) throw err;
-            console.log("insert to finish");
-        });
-        const time = [3, 13, 39, 78, 156, 312];
-        time.forEach(function (value, index) {
-            const sumSQL = `SELECT * FROM (SELECT * FROM projects ORDER BY id DESC LIMIT 0 , ${value}) t ORDER BY id ASC;`
-            //console.log(sumSQL);
-            conn.query(sumSQL, function (err, results) {
-                if (err) throw err;
-                //console.log(results);
-                //console.log(results[results.length-1]);
-                //console.log(row);
-                switch (value) {
-                    case 3:
-                        data.forEach(function (value1, index1) {
-                            value1.ten = (results[results.length - 1][`pr${value1.number}`] - results[0][`pr${value1.number}`]);
-                            //console.log(value1.ten);
-                        });
-                        break;
-                    case 13:
-                        data.forEach(function (value1, index1) {
-                            value1.hour1 = (results[results.length - 1][`pr${value1.number}`] - results[0][`pr${value1.number}`]);
-                        });
-                        break;
-                    case 39:
-                        data.forEach(function (value1, index1) {
-                            value1.hour3 = (results[results.length - 1][`pr${value1.number}`] - results[0][`pr${value1.number}`]);
-                        });
-                        break;
-                    case 78:
-                        data.forEach(function (value1, index1) {
-                            value1.hour6 = (results[results.length - 1][`pr${value1.number}`] - results[0][`pr${value1.number}`]);
-                        });
-                        break;
-                    case 156:
-                        data.forEach(function (value1, index1) {
-                            value1.hour12 = (results[results.length - 1][`pr${value1.number}`] - results[0][`pr${value1.number}`]);
-                        });
-                        break;
-                    case 312:
-                        data.forEach(function (value1, index1) {
-                            value1.hour24 = (results[results.length - 1][`pr${value1.number}`] - results[0][`pr${value1.number}`]);
-                        });
-                        break;
-                }
-                //console.log(data);
-            });
+            //console.log(results[results.length-1]);
+            //console.log(row);
+            switch (value) {
+                case 3:
+                    data.forEach(function (value1, index1) {
+                        value1.ten = (results[results.length - 1][`pr${value1.number}`] - results[0][`pr${value1.number}`]);
+                        //console.log(value1.ten);
+                    });
+                    break;
+                case 12:
+                    data.forEach(function (value1, index1) {
+                        value1.hour1 = (results[results.length - 1][`pr${value1.number}`] - results[0][`pr${value1.number}`]);
+                    });
+                    break;
+                case 36:
+                    data.forEach(function (value1, index1) {
+                        value1.hour3 = (results[results.length - 1][`pr${value1.number}`] - results[0][`pr${value1.number}`]);
+                    });
+                    break;
+                case 72:
+                    data.forEach(function (value1, index1) {
+                        value1.hour6 = (results[results.length - 1][`pr${value1.number}`] - results[0][`pr${value1.number}`]);
+                    });
+                    break;
+                case 144:
+                    data.forEach(function (value1, index1) {
+                        value1.hour12 = (results[results.length - 1][`pr${value1.number}`] - results[0][`pr${value1.number}`]);
+                    });
+                    break;
+                case 288:
+                    data.forEach(function (value1, index1) {
+                        value1.hour24 = (results[results.length - 1][`pr${value1.number}`] - results[0][`pr${value1.number}`]);
+                    });
+                    break;
+            }
+            //console.log(data);
         });
         const sqlSelect = `SELECT * from projects`;
         conn.query(sqlSelect, function (err, result) {
+            //console.log(result);
             data.forEach(function (valueD, indexD) {
                 let mass = [], massSUM = [], massRg = [];
-                for (let index = 0; index < result.length; index +=12)
-                {
+                for (let index = 0; index < result.length; index += 12) {
                     massSUM.push(result[index][`pr${valueD.number}`]);
                     //assRg.push(result[index][`pr${valueD.number}`]);
                     //console.log(massRg);
                 }
-                for (let index = 0; index < result.length; index +=12)
-                {
-                    massRg.push(Math.round(result[index][`pr${valueD.number}`]/valueD.amount*10000000));
+                for (let index = 0; index < result.length; index += 12) {
+                    massRg.push(Math.round(result[index][`pr${valueD.number}`] / valueD.amount * 10000000));
                     //console.log(massRg);
                 }
 
-                for (let time = 1; time < result.length; time += 2)
-                {
+                for (let time = 1; time < result.length; time += 3) {
                     mass.push(result[time][`pr${valueD.number}`] - result[time - 1][`pr${valueD.number}`]);
                 }
-                mass.splice(0,2);
+                mass.splice(0, 2);
                 data[indexD].data = mass;
                 data[indexD].dataSUM = massSUM;
                 data[indexD].dataRg = massRg;
@@ -97,46 +100,34 @@ function parserHTML() {
             })
 
             //console.log(data);
-        })
-    }
+        });
+    });
+    setTimeout(start,3000000);
+}
 
-    let index = 0;
+
+function parse() {
     let options = {
-        uri: data[index].link,
+        uri: "",
         transform: function (body) {
             return cheerio.load(body);
         }
-    }
-
-    function parse($) {
-        let suffrage = $(".votes-count").find("strong").html();
-        if(Number(suffrage) >= data[index].suffrage)
-            data[index].suffrage = suffrage;
-        console.log("finish" + index);
-        if (index == (data.length - 1)) {
-            vall += `'${data[index].suffrage}'`;
-            console.log("insert start");
-            insert();
-        } else {
-            vall += `'${data[index].suffrage}',`;
-            options.uri = data[++index].link;
-            request(options).then(parse).catch(function (err) {
-                if (index == (data.length - 1))
-                    vall += `'${data[index].suffrage}'`;
-                else
-                    vall += `'${data[index].suffrage}',`;
-                console.log("Произошла ошибка: " + err)
-            });
-        }
-
-    }
-
-    request(options).then(parse).catch(function (err) {
-            vall += `'${data[index].suffrage}'`;
-        console.log("Произошла ошибка: " + err);
+    };
+    let i = 0;
+    data.forEach(function (valueD, indexD) {
+        options.uri = valueD.link;
+        request(options).then(function ($) {
+            i++;
+            let suffrage = $(".votes-count").find("strong").html();
+            if (Number(suffrage) >= valueD.suffrage)
+                valueD.suffrage = suffrage;
+            console.log("finish" + indexD);
+            if(i==data.length)
+                insert();
+        }).catch(function (err) {
+            console.log("Произошла ошибка: " + err);
+        })
     })
-};
-
-parserHTML();
-setInterval(parserHTML, 360000);
+}
+start();
 module.exports = data;

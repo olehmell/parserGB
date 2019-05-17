@@ -136,11 +136,11 @@
                     data: value.data
                 };
                 let objSUM = {
-                    name: value.number,
+                    name: value.number  + " " + value.name,
                     data: value.dataSUM
                 };
                 let objRg = {
-                    name: value.number,
+                    name: value.number + " " + value.name,
                     data: value.dataRg
                 };
                 series.push(obj);
@@ -154,7 +154,7 @@
         }
     });
     function create(container,series,text,interval) {
-        Highcharts.chart(container, {
+        Highcharts.stockChart(container, {
 
             title: {
                 text: text

@@ -8,7 +8,10 @@ let conn = mysql.createConnection({
 });
 /*
 /*
-
+database: 'dbForGB',
+    host: "localhost",
+    user: "root",
+    password: "admin"
 database: 'zcaj2nq68420bkec',
     host: "lt80glfe2gj8p5n2.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
     user: "ljbyzr3bxwkhl203",
@@ -37,12 +40,12 @@ conn.connect(function (err) {
     function createTable() {
         let table = "";
         data.forEach(function (value1, index) {
-            table += `pr${value1.number} INT not null DEFAULT 0,`;
+            table += `pr${value1.number} INT null DEFAULT 0,`;
         });
         console.log(table);
 
         const sql2 = "CREATE TABLE projects" +
-            " (Id INT not null AUTO_INCREMENT, " + table + "result int not null default 0," +
+            " (Id INT not null AUTO_INCREMENT, " + table + "result int null default 0," + "time DATETIME DEFAULT CURRENT_TIMESTAMP,"+
             " PRIMARY KEY (Id) )";
         conn.query(sql2, function (err, results) {
             if (err) throw err;
