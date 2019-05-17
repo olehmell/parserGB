@@ -8,6 +8,11 @@ let conn = mysql.createConnection({
 });
 /*
 /*
+
+database: 'zcaj2nq68420bkec',
+    host: "lt80glfe2gj8p5n2.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
+    user: "ljbyzr3bxwkhl203",
+    password: "dcjm126j417bn8b5"
 database: 'mag6fchr4qon9rwk',
     host: "irkm0xtlo2pcmvvz.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
     user: "p89znwt5dr9w2k6x",

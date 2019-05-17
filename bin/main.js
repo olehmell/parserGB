@@ -39,27 +39,27 @@ function parserHTML() {
                             //console.log(value1.ten);
                         });
                         break;
-                    case 18:
+                    case 13:
                         data.forEach(function (value1, index1) {
                             value1.hour1 = (results[results.length - 1][`pr${value1.number}`] - results[0][`pr${value1.number}`]);
                         });
                         break;
-                    case 54:
+                    case 39:
                         data.forEach(function (value1, index1) {
                             value1.hour3 = (results[results.length - 1][`pr${value1.number}`] - results[0][`pr${value1.number}`]);
                         });
                         break;
-                    case 108:
+                    case 78:
                         data.forEach(function (value1, index1) {
                             value1.hour6 = (results[results.length - 1][`pr${value1.number}`] - results[0][`pr${value1.number}`]);
                         });
                         break;
-                    case 216:
+                    case 156:
                         data.forEach(function (value1, index1) {
                             value1.hour12 = (results[results.length - 1][`pr${value1.number}`] - results[0][`pr${value1.number}`]);
                         });
                         break;
-                    case 432:
+                    case 312:
                         data.forEach(function (value1, index1) {
                             value1.hour24 = (results[results.length - 1][`pr${value1.number}`] - results[0][`pr${value1.number}`]);
                         });
@@ -72,22 +72,23 @@ function parserHTML() {
         conn.query(sqlSelect, function (err, result) {
             data.forEach(function (valueD, indexD) {
                 let mass = [], massSUM = [], massRg = [];
-                for (let index = 0; index < result.length; index +=13)
+                for (let index = 0; index < result.length; index +=12)
                 {
                     massSUM.push(result[index][`pr${valueD.number}`]);
                     //assRg.push(result[index][`pr${valueD.number}`]);
                     //console.log(massRg);
                 }
-                for (let index = 0; index < result.length; index +=13)
+                for (let index = 0; index < result.length; index +=12)
                 {
                     massRg.push(Math.round(result[index][`pr${valueD.number}`]/valueD.amount*10000000));
                     //console.log(massRg);
                 }
 
-                for (let time = 1; time < result.length; time += 3)
+                for (let time = 1; time < result.length; time += 2)
                 {
                     mass.push(result[time][`pr${valueD.number}`] - result[time - 1][`pr${valueD.number}`]);
                 }
+                mass.splice(0,2);
                 data[indexD].data = mass;
                 data[indexD].dataSUM = massSUM;
                 data[indexD].dataRg = massRg;
