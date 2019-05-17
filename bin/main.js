@@ -108,7 +108,9 @@ function parserHTML() {
     }
 
     function parse($) {
-        data[index].suffrage = $(".votes-count").find("strong").html();
+        let suffrage = $(".votes-count").find("strong").html();
+        if(Number(suffrage) >= data[index].suffrage)
+            data[index].suffrage = suffrage;
         console.log("finish" + index);
         if (index == (data.length - 1)) {
             vall += `'${data[index].suffrage}'`;
