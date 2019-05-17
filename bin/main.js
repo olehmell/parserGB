@@ -23,7 +23,7 @@ function parserHTML() {
             if (err) throw err;
             console.log("insert to finish");
         });
-        const time = [3, 18, 54, 108, 216, 432];
+        const time = [3, 13, 39, 78, 156, 312];
         time.forEach(function (value, index) {
             const sumSQL = `SELECT * FROM (SELECT * FROM projects ORDER BY id DESC LIMIT 0 , ${value}) t ORDER BY id ASC;`
             //console.log(sumSQL);
@@ -72,13 +72,13 @@ function parserHTML() {
         conn.query(sqlSelect, function (err, result) {
             data.forEach(function (valueD, indexD) {
                 let mass = [], massSUM = [], massRg = [];
-                for (let index = 0; index < result.length; index +=18)
+                for (let index = 0; index < result.length; index +=13)
                 {
                     massSUM.push(result[index][`pr${valueD.number}`]);
                     //assRg.push(result[index][`pr${valueD.number}`]);
                     //console.log(massRg);
                 }
-                for (let index = 0; index < result.length; index +=18)
+                for (let index = 0; index < result.length; index +=13)
                 {
                     massRg.push(Math.round(result[index][`pr${valueD.number}`]/valueD.amount*10000000));
                     //console.log(massRg);
