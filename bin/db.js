@@ -1,10 +1,10 @@
 const mysql = require('mysql');
 const fs = require('fs');
 let conn = mysql.createConnection({
-    database: 'zcaj2nq68420bkec',
-    host: "lt80glfe2gj8p5n2.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
-    user: "ljbyzr3bxwkhl203",
-    password: "dcjm126j417bn8b5"
+    database: 'mag6fchr4qon9rwk',
+    host: "irkm0xtlo2pcmvvz.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
+    user: "p89znwt5dr9w2k6x",
+    password: "qfoepz8xcvsv4qme"
 });
 /*
 /*
@@ -30,7 +30,7 @@ conn.connect(function (err) {
 
 
     //const sql = "select * from projects;"
-    //const sql = "ALTER TABLE projects ADD pr3333 INT NULL default 0;";
+    //const sql = "alter table projects add time DATETIME DEFAULT CURRENT_TIMESTAMP;";
     //conn.query(sql, (err, result) => console.log(result))
     const sql0 = "SHOW TABLES LIKE 'projects';"
 
