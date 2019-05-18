@@ -7,11 +7,11 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const app = express();
 const parser = require('./bin/main');
-const crontab = require('node-crontab');
+var schedule = require('node-schedule');
 //server
 let data = parser.data;
 parser.start();
-crontab.scheduleJob("*/5 * * * *",function () {
+schedule.scheduleJob("*/5 * * * *",function () {
   parser.start();
 });
 //setInterval(parser.start,60000);

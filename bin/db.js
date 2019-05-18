@@ -1,10 +1,10 @@
 const mysql = require('mysql');
 const fs = require('fs');
 let conn = mysql.createConnection({
-    database: 'mag6fchr4qon9rwk',
-    host: "irkm0xtlo2pcmvvz.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
-    user: "p89znwt5dr9w2k6x",
-    password: "qfoepz8xcvsv4qme"
+    database: 'heroku_2d178c8efee1c34',
+    host: "eu-cdbr-west-02.cleardb.net",
+    user: "bdc40deabc4030",
+    password: "db1c1fa1"
 });
 /*
 /*
