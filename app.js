@@ -11,10 +11,10 @@ const crontab = require('node-crontab');
 //server
 let data = parser.data;
 parser.start();
-crontab.scheduleJob("*/10 * * * *",function () {
+crontab.scheduleJob("*/5 * * * *",function () {
   parser.start();
 });
-setInterval(parser.start,60000);
+//setInterval(parser.start,60000);
 app.get('/', function (req, res) {
   res.render('index', {data: data});
 });
