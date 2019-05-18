@@ -1,6 +1,5 @@
 var request = require("request-promise"),
-    cheerio = require("cheerio"), fs = require('fs'), conn = require('./db');
-;
+    cheerio = require("cheerio"), fs = require('fs'), conn = require('./db'), crontab = require('node-crontab');
 var data = JSON.parse(fs.readFileSync('views/project.json'));
 
 function start() {
@@ -97,11 +96,13 @@ function insert() {
                 //mass.shift();
                 //console.log("-------------");
             })
-
+            crontab.scheduleJob("*/5 * * * *",function () {
+                start();
+            });
             //console.log(data);
         });
     });
-    setTimeout(start,300000);
+
 }
 
 
