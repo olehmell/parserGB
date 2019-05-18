@@ -4,7 +4,7 @@ let request = require("request-promise"),
 
 
 function insert() {
-        let vall = [], arr = [];
+         let vall = [], arr = [];
         data.forEach(function (valueD, index) {
                 if (index == (data.length - 1)) {
                     vall += `'${valueD.suffrage}'`;
