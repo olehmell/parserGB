@@ -82,7 +82,7 @@ function insert() {
                     //console.log(massRg);
                 }
 
-                for (let time = 1; time < result.length; time += 3) {
+                for (let time = 1; time < result.length; time += 2) {
                     mass.push(result[time][`pr${valueD.number}`] - result[time - 1][`pr${valueD.number}`]);
                 }
                 data[indexD].data = mass;
