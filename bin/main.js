@@ -124,6 +124,8 @@ function parse() {
             if(i==data.length)
                 insert();
         }).catch(function (err) {
+            if(i==data.length)
+                insert();
             console.log("Произошла ошибка: " + err);
         })
     })
