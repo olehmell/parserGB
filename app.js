@@ -6,14 +6,20 @@ const logger = require('morgan');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const app = express();
-
+const parser = require('./bin/main');
+const crontab = require('node-crontab');
 //server
-let parser = require('./bin/main');
+let data = parser.data;
+parser.start();
+crontab.scheduleJob("*/10 * * * *",function () {
+  parser.start();
+});
+setInterval(parser.start,60000);
 app.get('/', function (req, res) {
-  res.render('index', {data: parser});
+  res.render('index', {data: data});
 });
 app.get('/select', function(req, res) {
-  res.json({ data: JSON.stringify(parser) });
+  res.json({ data: JSON.stringify(data) });
 });
 //
 // view engine setup

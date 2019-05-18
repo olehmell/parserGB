@@ -1,11 +1,6 @@
-var request = require("request-promise"),
-    cheerio = require("cheerio"), fs = require('fs'), conn = require('./db'), crontab = require('node-crontab');
-var data = JSON.parse(fs.readFileSync('views/project.json'));
+let request = require("request-promise"),
+    cheerio = require("cheerio"), fs = require('fs'), conn = require('./db'), data = JSON.parse(fs.readFileSync('views/project.json'));
 
-function start() {
-    parse();
-    console.log(data);
-};
 
 function insert() {
     let vall = [], arr = [];
@@ -22,14 +17,14 @@ function insert() {
     );
     console.log("insert");
     const insertSql = `INSERT INTO projects (${arr}) VALUES(${vall});`;
-    console.log(insertSql);
+    //console.log(insertSql);
     conn.query(insertSql, function (err, results) {
         if (err) throw err;
         console.log("insert to finish");
     });
     const time = [3, 12, 36, 72, 144, 288];
     time.forEach(function (value, index) {
-        console.log("run");
+        //console.log("run");
         //const sumSQL = `select ${summ} from projects where time between DATE_SUB(NOW(),INTERVAL ${value} MINUTE) and NOW();`
         const sumSQL = `SELECT * FROM (SELECT * FROM projects ORDER BY id DESC LIMIT 0 , ${value}) t ORDER BY id ASC;`
         //console.log(sumSQL);
@@ -96,15 +91,12 @@ function insert() {
                 //mass.shift();
                 //console.log("-------------");
             })
-            crontab.scheduleJob("*/5 * * * *",function () {
-                start();
-            });
+
             //console.log(data);
         });
     });
 
 }
-
 
 function parse() {
     let options = {
@@ -121,15 +113,23 @@ function parse() {
             let suffrage = $(".votes-count").find("strong").html();
             if (Number(suffrage) >= valueD.suffrage)
                 valueD.suffrage = suffrage;
-            console.log("finish" + indexD);
-            if(i==data.length)
+
+            if (i == data.length) {
+                console.log("finish" + indexD);
                 insert();
+            }
+
         }).catch(function (err) {
-            if(i==data.length)
+            if (i == data.length) {
+                console.log("finish" + indexD);
                 insert();
+            }
             console.log("Произошла ошибка: " + err);
         })
     })
 }
-start();
-module.exports = data;
+module.exports.data = data;
+module.exports.start = function () {
+    console.log("parse start");
+    parse();
+};
