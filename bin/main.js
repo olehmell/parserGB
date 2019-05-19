@@ -18,12 +18,10 @@ function insert() {
     console.log("insert");
     const insertSql = `INSERT INTO projects (${arr}) VALUES(${vall});`;
     //console.log(insertSql);
-    conn.getConnection(function (err, conn) {
-        conn.query(insertSql, function (err, results) {
-            conn.release();
-            if (err) throw err;
+    conn.query(insertSql, function (err, results) {
+        if (err) throw err;
+        else
             console.log("insert to finish");
-        });
     });
     const time = [3, 12, 36, 72, 144, 288];
     time.forEach(function (value, index) {
@@ -31,13 +29,9 @@ function insert() {
         //const sumSQL = `select ${summ} from projects where time between DATE_SUB(NOW(),INTERVAL ${value} MINUTE) and NOW();`
         const sumSQL = `SELECT * FROM (SELECT * FROM projects ORDER BY id DESC LIMIT 0 , ${value}) t ORDER BY id ASC;`
         //console.log(sumSQL);
-        conn.getConnection(function (err, conn) {
-            conn.query(sumSQL, function (err, results) {
-
-                conn.release();
-                if (err) throw err;
-                //console.log(results[results.length-1]);
-                //console.log(row);
+        conn.query(sumSQL, function (err, results) {
+            if (err) throw err;
+            else {
                 switch (value) {
                     case 3:
                         data.forEach(function (value1, index1) {
@@ -71,17 +65,14 @@ function insert() {
                         });
                         break;
                 }
-            });
+            }
         });
     });
-    //console.log(data);
 
     const sqlSelect = `SELECT * from projects`;
-    conn.getConnection(function (err, conn) {
-        conn.query(sqlSelect, function (err, result) {
-            conn.release();
-            if (err) throw err;
-            //console.log(result);
+    conn.query(sqlSelect, function (err, result) {
+        if (err) throw err;
+        else {
             data.forEach(function (valueD, indexD) {
                 let mass = [], massSUM = [], massRg = [];
                 for (let index = 0; index < result.length; index += 12) {
@@ -100,11 +91,8 @@ function insert() {
                 data[indexD].data = mass;
                 data[indexD].dataSUM = massSUM;
                 data[indexD].dataRg = massRg;
-                //mass.shift();
-                //console.log("-------------");
             });
-            //console.log(data);
-        });
+        }
     });
 }
 
