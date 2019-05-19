@@ -31,12 +31,12 @@ function sort(valClass,down) {
 }
 
 function bubbleSortUp(arr,valClass) {
-    for (let i = 0, endI = Object.keys(arr).length - 10; i < endI; i++) {
-        for (let j = 0, endJ = endI - i; j < endJ; j++) {
-            if (Number($(arr[j]).find(`.${valClass}`).text()) > Number($(arr[j+1]).find(`.${valClass}`).text())) {
+    for (let i = 0, endI = Object.keys(arr).length - 9; i < endI; i++) {
+        for (let j = 1, endJ = endI - i; j < endJ; j++) {
+            if (Number($(arr[j]).find(`.${valClass}`).text()) < Number($(arr[j-1]).find(`.${valClass}`).text())) {
                 const swap = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = swap;
+                arr[j] = arr[j - 1];
+                arr[j - 1] = swap;
             }
         }
     }
