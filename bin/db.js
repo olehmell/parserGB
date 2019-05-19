@@ -42,24 +42,24 @@ const data = JSON.parse(fs.readFileSync(`views/project.json`));
         const sql2 = "CREATE TABLE projects" +
             " (Id INT not null AUTO_INCREMENT, " + table + "time DATETIME DEFAULT CURRENT_TIMESTAMP,"+
             " PRIMARY KEY (Id) )";
-        conn.getConnection(function (err, conn) {
+       // conn.getConnection(function (err, conn) {
             conn.query(sql2, function (err, results) {
-                conn.destroy();
+                //conn.destroy();
                 if (err) throw err;
                 console.log("Table projects created");
             });
-        });
+       // });
     }
-conn.getConnection(function (err, conn) {
+//conn.getConnection(function (err, conn) {
     conn.query(sql0, function (err, results) {
-        conn.destroy();
+        //conn.destroy();
         if (err) throw err;
         if (results.length == 0) {
             console.log("empty");
             createTable();
         } else
             console.log("table created last");
-    });
+    //});
 });
     //conn.end();
 

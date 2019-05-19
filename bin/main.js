@@ -18,24 +18,24 @@ function insert() {
     console.log("insert");
     const insertSql = `INSERT INTO projects (${arr}) VALUES(${vall});`;
     //console.log(insertSql);
-    conn.getConnection(function (err, conn) {
+    //conn.getConnection(function (err, conn) {
         conn.query(insertSql, function (err, results) {
-            conn.destroy();
+            //conn.destroy();
             if (err)
                 throw err;
             else
                 console.log("insert to finish");
         });
-    });
+   //});
     const time = [3, 12, 36, 72, 144, 288];
     time.forEach(function (value, index) {
         //console.log("run");
         //const sumSQL = `select ${summ} from projects where time between DATE_SUB(NOW(),INTERVAL ${value} MINUTE) and NOW();`
         const sumSQL = `SELECT * FROM (SELECT * FROM projects ORDER BY id DESC LIMIT 0 , ${value}) t ORDER BY id ASC;`
         //console.log(sumSQL);
-        conn.getConnection(function (err, conn) {
+        //conn.getConnection(function (err, conn) {
             conn.query(sumSQL, function (err, results) {
-                conn.destroy();
+                //conn.destroy();
                 if (err) throw err;
                 else {
                     switch (value) {
@@ -74,12 +74,12 @@ function insert() {
                 }
             });
         });
-    });
+   // });
 
     const sqlSelect = `SELECT * from projects`;
-    conn.getConnection(function (err, conn) {
+    //conn.getConnection(function (err, conn) {
         conn.query(sqlSelect, function (err, result) {
-            conn.destroy();
+            //conn.destroy();
             if (err) throw err;
             else {
                 data.forEach(function (valueD, indexD) {
@@ -103,7 +103,7 @@ function insert() {
                 });
             }
         });
-    });
+   // });
 }
 
 function parse() {
