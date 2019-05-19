@@ -10,6 +10,7 @@ const parser = require('./bin/main');
 var schedule = require('node-schedule');
 //server
 let data = parser.data;
+parser.start();
 schedule.scheduleJob("*/5 * * * *",function () {
   parser.start();
 });
