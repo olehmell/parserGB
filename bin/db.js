@@ -1,11 +1,11 @@
 const mysql = require('mysql');
 const fs = require('fs');
 let conn = mysql.createPool({
-    connectionLimit : 5,
-    host     : 'eu-cdbr-west-02.cleardb.net',
-    user     : 'b077bcc556224b',
-    password : '9b98f6a3',
-    database : 'heroku_48ee6185f3d9445'
+    connectionLimit : 8,
+    database: 'heroku_66b709597cff373',
+    host: "eu-cdbr-west-02.cleardb.net",
+    user: "b00300329a8eb3",
+    password: "88e479ab"
 });
 /*
 /*

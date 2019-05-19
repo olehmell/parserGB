@@ -68,7 +68,7 @@ function create(container, series, text, interval, stock) {
                     label: {
                         connectorAllowed: true
                     },
-                    pointStart: Date.UTC(2019, 4, 15, 9),
+                    pointStart: Date.UTC(2019, 3, 15, 9),
                     pointInterval: interval
                 }
             },
