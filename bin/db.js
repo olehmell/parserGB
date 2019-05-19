@@ -1,10 +1,11 @@
 const mysql = require('mysql');
 const fs = require('fs');
-let conn = mysql.createConnection({
-    database: 'heroku_2d178c8efee1c34',
-    host: "eu-cdbr-west-02.cleardb.net",
-    user: "bdc40deabc4030",
-    password: "db1c1fa1"
+let conn = mysql.createPool({
+    connectionLimit : 5,
+    host     : 'eu-cdbr-west-02.cleardb.net',
+    user     : 'b077bcc556224b',
+    password : '9b98f6a3',
+    database : 'heroku_48ee6185f3d9445'
 });
 /*
 /*
@@ -26,16 +27,9 @@ database: 'mag6fchr4qon9rwk',
     password: "qfoepz8xcvsv4qme"
  */
 const data = JSON.parse(fs.readFileSync(`views/project.json`));
-conn.connect(function (err) {
-    if (err) {
-        throw err;
-    }
-    console.log("Connected!");
+
     //console.log(table);
     //const sql = "drop table projects;"
-
-
-
     //const sql = "select * from projects;"
     //const sql = "alter table projects add time DATETIME DEFAULT CURRENT_TIMESTAMP;";
     //conn.query(sql, (err, result) => console.log(result))
@@ -49,7 +43,7 @@ conn.connect(function (err) {
         console.log(table);
 
         const sql2 = "CREATE TABLE projects" +
-            " (Id INT not null AUTO_INCREMENT, " + table + "result int null default 0," + "time DATETIME DEFAULT CURRENT_TIMESTAMP,"+
+            " (Id INT not null AUTO_INCREMENT, " + table + "time DATETIME DEFAULT CURRENT_TIMESTAMP,"+
             " PRIMARY KEY (Id) )";
         conn.query(sql2, function (err, results) {
             if (err) throw err;
@@ -65,6 +59,6 @@ conn.connect(function (err) {
         } else
             console.log("table created last");
     });
+    //conn.end();
 
-});
 module.exports = conn;
