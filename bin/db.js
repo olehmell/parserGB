@@ -2,10 +2,10 @@ const mysql = require('mysql');
 const fs = require('fs');
 let conn = mysql.createPool({
     connectionLimit : 5,
-    database: 'bym1onf7s6lbdh4v',
-    host: "sabaik6fx8he7pua.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
-    user: "z6wyzx8uf6w1ynqb",
-    password: "kwcvgb973luqjqae"
+    host     : 'eu-cdbr-west-02.cleardb.net',
+    user     : 'b077bcc556224b',
+    password : '9b98f6a3',
+    database : 'heroku_48ee6185f3d9445'
 });
 /*
 /*
