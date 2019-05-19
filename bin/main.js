@@ -20,7 +20,7 @@ function insert() {
     //console.log(insertSql);
     conn.getConnection(function (err, conn) {
         conn.query(insertSql, function (err, results) {
-            conn.destroy();
+            conn.release();
             if (err) throw err;
             console.log("insert to finish");
         });
@@ -34,7 +34,7 @@ function insert() {
         conn.getConnection(function (err, conn) {
             conn.query(sumSQL, function (err, results) {
 
-                conn.destroy();
+                conn.release();
                 if (err) throw err;
                 //console.log(results[results.length-1]);
                 //console.log(row);
@@ -79,7 +79,7 @@ function insert() {
     const sqlSelect = `SELECT * from projects`;
     conn.getConnection(function (err, conn) {
         conn.query(sqlSelect, function (err, result) {
-            conn.destroy();
+            conn.release();
             if (err) throw err;
             //console.log(result);
             data.forEach(function (valueD, indexD) {
