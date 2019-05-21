@@ -15,9 +15,9 @@ if(start)
 {
   start = false;
   parser.start();
-  //missNAU.start();
+ // missNAU.start();
 }
-schedule.scheduleJob("* * * * *",function () {
+schedule.scheduleJob("*\5 * * * *",function () {
   parser.start();
 });
 let dataMISS = missNAU.data;
@@ -26,13 +26,13 @@ app.get('/', function (req, res) {
   res.render('index', {data: data});
 });
 app.get('/miss', function (req, res) {
-  missNAU.start();
   res.render('missNAU', {data: dataMISS});
 });
 app.get('/select', function(req, res) {
   res.json({ data: JSON.stringify(data) });
 });
 app.get('/selectMISS', function(req, res) {
+  missNAU.start();
   res.json({ data: JSON.stringify(dataMISS) });
 });
 //
