@@ -28,18 +28,16 @@
     setInterval(chart,20000);
    function chart() {
        //console.log("reload");
-       var data = [];
-       let series = [], seriesSUM = [], seriesRg = [];
+       let data = [],series = [], seriesSUM = [], seriesRg = [];
        $.ajax({
            url: '/selectMISS',
            complete: function (dataJSON) {
                //console.log(dataJSON.responseJSON.data);
                data = JSON.parse(dataJSON.responseJSON.data);
-               console.log(data);
                data.forEach(function (value, index) {
                    let obj = {
                        name: value.name,
-                       y: Number(value.suffrage)
+                       y: (Number(value.suffrage) - Number(value.constSUB))
                    };
                    series.push(obj);
                });
