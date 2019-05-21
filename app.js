@@ -15,17 +15,18 @@ if(start)
 {
   start = false;
   parser.start();
+  //missNAU.start();
 }
-schedule.scheduleJob("*\5 * * * *",function () {
+schedule.scheduleJob("* * * * *",function () {
   parser.start();
 });
 let dataMISS = missNAU.data;
-setInterval(missNAU.start,10000);
 //setInterval(parser.start,60000);
 app.get('/', function (req, res) {
   res.render('index', {data: data});
 });
 app.get('/miss', function (req, res) {
+  missNAU.start();
   res.render('missNAU', {data: dataMISS});
 });
 app.get('/select', function(req, res) {

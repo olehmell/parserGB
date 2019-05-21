@@ -9,7 +9,7 @@
     <style>
         #container1 {
             width: 100%;
-            height: 66em;
+            height: 700px;
         }
     </style>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -25,7 +25,7 @@
 <script src="https://code.highcharts.com/modules/drilldown.js"></script>
 <script type="text/javascript">
     chart();
-    setInterval(chart,10000);
+    setInterval(chart,20000);
    function chart() {
        //console.log("reload");
        var data = [];
@@ -58,10 +58,10 @@
                 type: 'column'
             },
             title: {
-                text: ''
+                text: 'Кількість голосів'
             },
             subtitle: {
-                text: ''
+                text: '...'
             },
             xAxis: {
                 type: 'category'
@@ -86,7 +86,7 @@
             },
             series: [
                 {
-                    name: "Browsers",
+                    name: "Голосів:",
                     colorByPoint: true,
                     data: series
                 }
