@@ -7,7 +7,8 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const app = express();
 const parser = require('./bin/main');
-var schedule = require('node-schedule');
+const schedule = require('node-schedule');
+const missNAU = require('./bin/missNAU.js');
 //server
 let data = parser.data, start = true;
 if(start)
@@ -15,15 +16,23 @@ if(start)
   start = false;
   parser.start();
 }
-schedule.scheduleJob("*/5 * * * *",function () {
+schedule.scheduleJob("*\5 * * * *",function () {
   parser.start();
 });
+let dataMISS = missNAU.data;
+setInterval(missNAU.start,10000);
 //setInterval(parser.start,60000);
 app.get('/', function (req, res) {
   res.render('index', {data: data});
 });
+app.get('/miss', function (req, res) {
+  res.render('missNAU', {data: dataMISS});
+});
 app.get('/select', function(req, res) {
   res.json({ data: JSON.stringify(data) });
+});
+app.get('/selectMISS', function(req, res) {
+  res.json({ data: JSON.stringify(dataMISS) });
 });
 //
 // view engine setup
