@@ -9,12 +9,20 @@
     <style>
         #container1 {
             width: 100%;
-            height: 700px;
+            height: 680px;
         }
+        @media (min-width: 1500px){
+            #container1 {
+                width: 100%;
+                height: 1000px;
+            }
+        }
+
     </style>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
+<button class="btn btn-dark" id="reset">Обнулити</button>
 <div id="container1"></div>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" type="text/javascript"></script>
@@ -26,20 +34,38 @@
 <script type="text/javascript">
     chart();
     setInterval(chart,20000);
+    let data = [],series = [], seriesSUM = [], seriesRg = [];
+    console.log(seriesSUM);
+    function clear()
+    {
+        data.forEach(function (value,index) {
+            seriesSUM[index] = (value.suffrage);
+        });
+        console.log(seriesSUM);
+    }
+
+    $("#reset").on("click",function () {
+        clear();
+        chart();
+    });
    function chart() {
-       //console.log("reload");
-       let data = [],series = [], seriesSUM = [], seriesRg = [];
+       $("#container1").empty();
        $.ajax({
            url: '/selectMISS',
            complete: function (dataJSON) {
                //console.log(dataJSON.responseJSON.data);
                data = JSON.parse(dataJSON.responseJSON.data);
                data.forEach(function (value, index) {
+                   let y = 0;
+                   if(seriesSUM.length == 0)
+                        y = Number(value.suffrage)
+                   else
+                       y = (Number(value.suffrage) - Number(seriesSUM[index]))
                    let obj = {
                        name: value.name,
-                       y: (Number(value.suffrage) - Number(value.constSUB))
+                       y: y
                    };
-                   series.push(obj);
+                   series[index] = obj;
                });
                //series = JSON.stringify(series);
                console.log(series);
@@ -62,12 +88,20 @@
                 text: '...'
             },
             xAxis: {
-                type: 'category'
+                type: 'category',
+                labels: {
+                    style: {
+                        fontSize: '25px'
+                    }
+                }
             },
             yAxis: {
-                title: {
-                    text: ''
-                }
+                labels: {
+                    style: {
+                        fontSize: '25px'
+                    }
+                },
+                max: 50
 
             },
             legend: {

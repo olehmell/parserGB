@@ -14,15 +14,9 @@ let data = parser.data, start = true;
 let dataMISS = missNAU.data;
 if(start)
 {
+  missNAU.start();
   start = false;
   parser.start();
-  missNAU.start();
-  setTimeout(function () {
-    dataMISS.forEach(function (value,index) {
-      value.constSUB = (value.suffrage);
-    });
-  },2000);
-
 }
 schedule.scheduleJob("*/5 * * * *",function () {
   parser.start();
