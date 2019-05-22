@@ -18,7 +18,14 @@
             margin-right: 5%;
             width: 90%;
         }
-
+        .win
+        {
+            background: rgba(33, 255, 28, 0.34);
+        }
+        .nowin
+        {
+            background: rgba(255, 251, 41, 0.34);
+        }
         img {
             height: 30px;
             width: 30px;
@@ -67,7 +74,7 @@
     <hr class="px-0 py-1 mx-0 my-0">
     <div class="row">
         <div class="col-1 text-center number z">№</div>
-        <div class="col-2 pr-0 amount z">Назва<br/>Бюджет</div>
+        <div class="col-2 pr-0 amount z">Назва<br/>Бюджет<br/>Місце</div>
         <div class="col-1 pl-0 retng mr-2 text-center z">Рейтинг
             <img src="../images/iconfinder_chevron-circle-down_1608620.svg" class="sortUp" alt="sort">
         </div>
@@ -90,8 +97,9 @@
     <% data.forEach(function (value1, index) { %>
     <div class="row sort_rows">
         <div class="col-1 number"><%= value1.number %></div>
-        <div class="col-2 project_link pr-0 mr-2">
-            <a target="_blank" href="<%=value1.link %>"> <%= value1.name %></a><br/><div class="amount"><%= value1.amount %>грн</div></div>
+        <div class="col-2 project_link pr-0 mr-2 <%= value1.win %>">
+            <a target="_blank" href="<%=value1.link %>"> <%= value1.name %></a><br/><div class="amount"><%= value1.amount %>грн</div>
+            №<%= value1.retng%></div>
         <div class="col-1 text-center pl-0 retng"><%=  Math.round(value1.suffrage/value1.amount * 10000000) %></div>
         <div class="col-1 text-center pl-0 10min_info"><%= value1.ten %></div>
         <div class="col-1 text-center pl-0 1h_info"><%= value1.hour1 %></div>

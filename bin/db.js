@@ -3,9 +3,9 @@ const fs = require('fs');
 let conn = mysql.createPool({
     connectionLimit : 10,
     host     : 'eu-cdbr-west-02.cleardb.net',
-    user     : 'b077bcc556224b',
-    password : '9b98f6a3',
-    database : 'heroku_48ee6185f3d9445'
+    user     : 'b00300329a8eb3',
+    password : '88e479ab',
+    database : 'heroku_66b709597cff373'
 });
 /*
 /*

@@ -2,33 +2,28 @@ let request = require("request-promise"),
     cheerio = require("cheerio"), fs = require('fs'), conn = require('./db'),
     data = JSON.parse(fs.readFileSync('views/test.json'));
 
-function parse() {
+function parse()
+{
     let options = {
-        uri: "",
+        uri: "https://gurin.com.ua/rating.php",
         transform: function (body) {
             return cheerio.load(body);
         }
     };
-    let i = 0;
-    data.forEach(function (valueD, indexD) {
-        options.uri = valueD.link;
-        request(options).then(function ($) {
-            i++;
-            let suffrage = $(".votes-count").find("strong").html();
-            if (Number(suffrage) >= valueD.suffrage)
-                valueD.suffrage = suffrage;
-
-            if (i == data.length) {
-                console.log("finish" + indexD);
+    request(options).then(function ($) {
+        data.forEach(function (value,index) {
+            const proj = $($(`.proj_num:contains("${value.number}")`)).parent();
+            let suffrage = proj.find(".vote").html();
+            suffrage = suffrage.split(' ');
+            if(suffrage.length > 1)
+            {
+                suffrage = suffrage[0] + suffrage[1].toString();
             }
-
-        }).catch(function (err) {
-            if (i == data.length) {
-                console.log("finish" + indexD);
-            }
-            console.log("Произошла ошибка: " + err);
+            //console.log(suffrage);
+            if (Number(suffrage) >= value.suffrage)
+                value.suffrage = suffrage;
         })
-    })
+    });
 }
 
 module.exports.data = data;

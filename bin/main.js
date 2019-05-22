@@ -106,7 +106,7 @@ function insert() {
    // });
 }
 
-function parse() {
+/*function parse() {
     let options = {
         uri: "",
         transform: function (body) {
@@ -119,6 +119,13 @@ function parse() {
         request(options).then(function ($) {
             i++;
             let suffrage = $(".votes-count").find("strong").html();
+            suffrage = suffrage.split(' ');
+            if(suffrage.length > 1)
+            {
+                suffrage = suffrage[0] + suffrage[1].toString();
+            }
+
+            console.log(suffrage);
             if (Number(suffrage) >= valueD.suffrage)
                 valueD.suffrage = suffrage;
 
@@ -135,8 +142,40 @@ function parse() {
             console.log("Произошла ошибка: " + err);
         })
     })
+}*/
+function parse()
+{
+    let options = {
+        uri: "https://gurin.com.ua/rating.php",
+        transform: function (body) {
+            return cheerio.load(body);
+        }
+    };
+    request(options).then(function ($) {
+        data.forEach(function (value,index) {
+            const proj = $($(`.proj_num:contains("${value.number}")`)).parent();
+            let retng = proj.find(".sort");
+            value.retng = retng.html();
+            if(retng.hasClass("win"))
+                value.win = "win";
+            else
+                value.win = "nowin";
+            let suffrage = proj.find(".vote").html();
+            suffrage = suffrage.split(' ');
+            if(suffrage.length > 1)
+            {
+                suffrage = suffrage[0] + suffrage[1].toString();
+            }
+            //console.log(suffrage);
+            if (Number(suffrage) >= value.suffrage)
+                value.suffrage = suffrage;
+            //console.log(retng.html());
+        })
+        insert();
+    }).catch(function (err) {
+            insert();
+        console.log("Произошла ошибка: " + err);});
 }
-
 module.exports.data = data;
 module.exports.start = function () {
     console.log("parse start");
