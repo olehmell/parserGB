@@ -164,10 +164,6 @@ function parse() {
             }
 
         }).catch(function (err) {
-            if (i == data.length) {
-                console.log("finish" + indexD);
-                insert();
-            }
             console.log("Произошла ошибка: " + err);
         })
     })
