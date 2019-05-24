@@ -151,34 +151,31 @@ function parse() {
             console.log("Error!!!" + error);
         }
         let $ = cheerio.load(body);
-        setTimeout(function () {
-            data.forEach(function (value, index) {
-                let proj;
-                if (value.name == "Radioday")
-                    proj = $($(`.name:contains("${value.name}")`)).parent();
-                else
-                    proj = $($(`.proj_num:contains("${value.number}")`)).parent();
-                let retng = proj.find(".sort");
-                value.retng = retng.html();
-                let suffrage = proj.find(".vote").html();
-                if (retng.hasClass("win") && (suffrage > value.min))
-                    value.win = "win";
-                else if (retng.hasClass("win"))
-                    value.win = "nowin";
-                else
-                    value.win = "closed";
-                suffrage = suffrage.split(' ');
-                if (suffrage.length > 1) {
-                    suffrage = suffrage[0] + suffrage[1].toString();
-                }
-                //console.log(suffrage);
-                if (Number(suffrage) >= value.suffrage)
-                    value.suffrage = suffrage;
-                //console.log(retng.html());
-            })
-            insert();
-        }, 5000);
-
+        data.forEach(function (value, index) {
+            let proj;
+            if (value.name == "Radioday")
+                proj = $($(`.name:contains("${value.name}")`)).parent();
+            else
+                proj = $($(`.proj_num:contains("${value.number}")`)).parent();
+            let retng = proj.find(".sort");
+            value.retng = retng.html();
+            let suffrage = proj.find(".vote").html();
+            if (retng.hasClass("win") && (suffrage > value.min))
+                value.win = "win";
+            else if (retng.hasClass("win"))
+                value.win = "nowin";
+            else
+                value.win = "closed";
+            suffrage = suffrage.split(' ');
+            if (suffrage.length > 1) {
+                suffrage = suffrage[0] + suffrage[1].toString();
+            }
+            //console.log(suffrage);
+            if (Number(suffrage) >= value.suffrage)
+                value.suffrage = suffrage;
+            //console.log(retng.html());
+        })
+        insert();
     });
 }
 
