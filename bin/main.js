@@ -153,20 +153,14 @@ function parse()
     };
     request(options).then(function ($) {
         data.forEach(function (value,index) {
-            let proj;
-            if (value.name == "Radioday")
-                proj = $($(`.name:contains("${value.name}")`)).parent();
-            else
-                 proj = $($(`.proj_num:contains("${value.number}")`)).parent();
+            const proj = $($(`.proj_num:contains("${value.number}")`)).parent();
             let retng = proj.find(".sort");
             value.retng = retng.html();
-            let suffrage = proj.find(".vote").html();
-            if(retng.hasClass("win") && (suffrage > value.min))
+            if(retng.hasClass("win"))
                 value.win = "win";
-            else if(retng.hasClass("win"))
-                value.win = "nowin";
             else
-                value.win = "closed";
+                value.win = "nowin";
+            let suffrage = proj.find(".vote").html();
             suffrage = suffrage.split(' ');
             if(suffrage.length > 1)
             {
