@@ -43,6 +43,10 @@
         .down {
             transform: rotate(180deg);
         }
+        .hide
+        {
+            display: none;
+        }
         @media (min-width: 500px) and (max-width: 900px) {
             .table_project {
                 overflow-x: hidden;
@@ -120,11 +124,12 @@
     <% } %>
     <% }); %>
 </div>
-<div id="container3"></div>
-<div id="container1"></div>
-<div id="container2"></div>
-
-
+<button class="btn btn-primary chart w-100">Побудувати графіки</button>
+<div class="charts hide">
+    <div id="container3" ></div>
+    <div id="container1" ></div>
+    <div id="container2" ></div>
+</div>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" type="text/javascript"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" type="text/javascript"></script>

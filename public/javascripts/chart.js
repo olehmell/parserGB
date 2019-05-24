@@ -1,5 +1,9 @@
-$(document).ready(chart());
+$(".chart").on("click",function () {
+    this.remove();
+    chart();
+});
 function chart() {
+    $(".charts").removeClass("hide");
     var data = [];
     let series = [], seriesSUM = [], seriesRg = [];
     $.ajax({
