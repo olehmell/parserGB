@@ -2,8 +2,39 @@ let request = require("request-promise"),
     cheerio = require("cheerio"), fs = require('fs'), conn = require('./db'),
     data = JSON.parse(fs.readFileSync('views/project.json'));
 
+function retung() {
+    let options = {
+        uri: "https://gurin.com.ua/rating.php",
+        transform: function (body) {
+            return cheerio.load(body);
+        }
+    };
+    request(options).then(function ($) {
+        data.forEach(function (value, index) {
+            let proj;
+            if (value.name == "Radioday")
+                proj = $($(`.name:contains("${value.name}")`)).parent();
+            else
+                proj = $($(`.proj_num:contains("${value.number}")`)).parent();
+            let retng = proj.find(".sort");
+            value.retng = retng.html();
+            if (retng.hasClass("win") && (value.suffrage > value.min))
+                value.win = "win";
+            else if (retng.hasClass("win"))
+                value.win = "nowin";
+            else
+                value.win = "closed";
+
+            console.log("ret" + value.retng);
+        });
+    }).catch(function (err) {
+        //insert();
+        console.log("Произошла ошибка gorin: " + err);});
+}
+
 
 function insert() {
+    retung();
     let vall = [], arr = [];
     data.forEach(function (valueD, index) {
             if (index == (data.length - 1)) {
@@ -105,7 +136,6 @@ function insert() {
         });
    // });
 }
-
 function parse() {
     let options = {
         uri: "https://gurin.com.ua/rating.php",
@@ -113,24 +143,7 @@ function parse() {
             return cheerio.load(body);
         }
     };
-    request(options).then(function ($) {
-        data.forEach(function (value, index) {
-            let proj;
-            if (value.name == "Radioday")
-                proj = $($(`.name:contains("${value.name}")`)).parent();
-            else
-                proj = $($(`.proj_num:contains("${value.number}")`)).parent();
-            let retng = proj.find(".sort");
-            value.retng = retng.html();
-            let suffrage = proj.find(".vote").html();
-            if (retng.hasClass("win") && (suffrage > value.min))
-                value.win = "win";
-            else if (retng.hasClass("win"))
-                value.win = "nowin";
-            else
-                value.win = "closed";
-        });
-    });
+    console.log("run1");
     let i = 0;
     data.forEach(function (valueD, indexD) {
         options.uri = valueD.link;
@@ -142,8 +155,6 @@ function parse() {
             {
                 suffrage = suffrage[0] + suffrage[1].toString();
             }
-
-            console.log(suffrage);
             if (Number(suffrage) >= valueD.suffrage)
                 valueD.suffrage = suffrage;
 
