@@ -106,13 +106,31 @@ function insert() {
    // });
 }
 
-/*function parse() {
+function parse() {
     let options = {
-        uri: "",
+        uri: "https://gurin.com.ua/rating.php",
         transform: function (body) {
             return cheerio.load(body);
         }
     };
+    request(options).then(function ($) {
+        data.forEach(function (value, index) {
+            let proj;
+            if (value.name == "Radioday")
+                proj = $($(`.name:contains("${value.name}")`)).parent();
+            else
+                proj = $($(`.proj_num:contains("${value.number}")`)).parent();
+            let retng = proj.find(".sort");
+            value.retng = retng.html();
+            let suffrage = proj.find(".vote").html();
+            if (retng.hasClass("win") && (suffrage > value.min))
+                value.win = "win";
+            else if (retng.hasClass("win"))
+                value.win = "nowin";
+            else
+                value.win = "closed";
+        });
+    });
     let i = 0;
     data.forEach(function (valueD, indexD) {
         options.uri = valueD.link;
@@ -142,8 +160,8 @@ function insert() {
             console.log("Произошла ошибка: " + err);
         })
     })
-}*/
-function parse()
+}
+/*function parse()
 {
     let options = {
         uri: "https://gurin.com.ua/rating.php",
@@ -181,7 +199,7 @@ function parse()
     }).catch(function (err) {
             insert();
         console.log("Произошла ошибка: " + err);});
-}
+}*/
 module.exports.data = data;
 module.exports.start = function () {
     console.log("parse start");
