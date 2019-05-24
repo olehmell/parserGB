@@ -1,4 +1,4 @@
-let request = require("request-promise"),
+let request = require("request"),
     cheerio = require("cheerio"), fs = require('fs'), conn = require('./db'),
     data = JSON.parse(fs.readFileSync('views/test.json'));
 
