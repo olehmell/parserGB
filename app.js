@@ -8,13 +8,13 @@ const usersRouter = require('./routes/users');
 const app = express();
 const parser = require('./bin/main');
 const schedule = require('node-schedule');
-//const missNAU = require('./bin/missNAU.js');
+const missNAU = require('./bin/missNAU.js');
 //server
 let data = parser.data, start = true;
-//let dataMISS = missNAU.data;
+let dataMISS = missNAU.data;
 if(start)
 {
-  //missNAU.start();
+  missNAU.start();
   start = false;
   parser.start();
 }
@@ -31,13 +31,13 @@ app.get('/select', function(req, res) {
 });
 
 //miss
-/*app.get('/miss', function (req, res) {
+app.get('/miss', function (req, res) {
   res.render('missNAU', {data: dataMISS});
 });
 app.get('/selectMISS', function(req, res) {
   missNAU.start();
   res.json({ data: JSON.stringify(dataMISS) });
-});*/
+});
 //
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
