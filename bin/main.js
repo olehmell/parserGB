@@ -5,7 +5,6 @@ let request = require("request-promise"),
 function retung() {
     let options = {
         uri: "https://gurin.com.ua/rating.php",
-        timeout: 10000,
         headers:
             {
                 'Connection': 'Keep-Alive'
@@ -14,7 +13,7 @@ function retung() {
             return cheerio.load(body);
         }
     };
-    request(options).then(function ($) {
+    let req = request(options).then(function ($) {
         data.forEach(function (value, index) {
             let proj;
             if (value.name == "Radioday")
@@ -36,7 +35,6 @@ function retung() {
         console.log("Произошла ошибка gorin: " + err);
         retung();
     });
-
 }
 
 
