@@ -6,6 +6,10 @@ function retung() {
     let options = {
         uri: "https://gurin.com.ua/rating.php",
         timeout: 10000,
+        headers:
+            {
+                'Connection': 'Keep-Alive'
+            },
         transform: function (body) {
             return cheerio.load(body);
         }
