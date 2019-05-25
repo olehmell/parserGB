@@ -33,7 +33,6 @@ function retung() {
         });
     }).catch(function (err) {
         console.log("Произошла ошибка gorin: " + err);
-        retung();
     });
 }
 
