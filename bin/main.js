@@ -5,6 +5,7 @@ let request = require("request-promise"),
 function retung() {
     let options = {
         uri: "https://gurin.com.ua/rating.php",
+        timeout: 10000,
         transform: function (body) {
             return cheerio.load(body);
         }
