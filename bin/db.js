@@ -26,10 +26,10 @@ database: 'dbForGB',
 const data = JSON.parse(fs.readFileSync(`views/project.json`));
 
     //console.log(table);
-    //const sql = "drop table projects;"
+    const sql = "drop table projects;"
     //const sql = "select * from projects;"
     //const sql = "alter table projects add time DATETIME DEFAULT CURRENT_TIMESTAMP;";
-    //conn.query(sql, (err, result) => console.log(result))
+    conn.query(sql, (err, result) => console.log(result))
     const sql0 = "SHOW TABLES LIKE 'projects';"
 
     function createTable() {
