@@ -1,86 +1,51 @@
 [
   {
-    "number": "2095",
+    "number": "1652",
     "name": "Соломафест",
-    "link": "https://gb.kyivcity.gov.ua/projects/11/2095",
-    "amount": "2050000",
+    "link": "https://gb.kyivcity.gov.ua/projects/16/1652",
+    "amount": "1968000",
     "suffrage": "0"
   },
   {
-    "number": "732",
-    "name": "Арт-фестиваль «Повидло»",
-    "link": "https://gb.kyivcity.gov.ua/projects/11/732",
-    "amount": "412800",
+    "number": "867",
+    "name": "ExhaZoom",
+    "link": "https://gb.kyivcity.gov.ua/projects/16/867",
+    "amount": "1194000",
     "suffrage": "0"
   },
   {
-    "number": "2013",
-    "name": "Студвесна",
-    "link": "https://gb.kyivcity.gov.ua/projects/11/2013",
-    "amount": "375400",
+    "number": "1546",
+    "name": "Баскетбольний майданчик",
+    "link": "https://gb.kyivcity.gov.ua/projects/16/1546",
+    "amount": "1094000",
     "suffrage": "0"
   },
   {
-    "number": "1300",
-    "name": "AirZoom",
-    "link": "https://gb.kyivcity.gov.ua/projects/11/1300",
-    "amount": "323000",
+    "number": "602",
+    "name": "TreeMap",
+    "link": "https://gb.kyivcity.gov.ua/projects/16/602",
+    "amount": "497900",
     "suffrage": "0"
   },
   {
-    "number": "1901",
-    "name": "Медіастудія",
-    "link": "https://gb.kyivcity.gov.ua/projects/11/1901",
-    "amount": "300939",
+    "number": "724",
+    "name": "3DMA",
+    "link": "https://gb.kyivcity.gov.ua/projects/16/724",
+    "amount": "298800",
     "suffrage": "0"
   },
   {
-    "number": "1661",
-    "name": "Кіберчемпіонат",
-    "link": "https://gb.kyivcity.gov.ua/projects/11/1661",
-    "amount": "199950",
+    "number": "1173",
+    "name": "AviaHack",
+    "link": "https://gb.kyivcity.gov.ua/projects/16/1173",
+    "amount": "109932",
     "suffrage": "0"
   },
   {
-    "number": "2031",
-    "name": "Cybersecurity training center",
-    "link": "https://gb.kyivcity.gov.ua/projects/11/2031",
-    "amount": "197760",
-    "suffrage": "0"
-  },
-  {
-    "number": "1890",
-    "name": "Інженерний хакатон",
-    "link": "https://gb.kyivcity.gov.ua/projects/11/1890",
-    "amount": "196080",
-    "suffrage": "0"
-  },
-  {
-    "number": "2002",
-    "name": "Ракета",
-    "link": "https://gb.kyivcity.gov.ua/projects/11/2002",
-    "amount": "180457",
-    "suffrage": "0"
-  },
-  {
-    "number": "2151",
-    "name": "Robot Made Challenge",
-    "link": "https://gb.kyivcity.gov.ua/projects/11/2151",
-    "amount": "145316",
-    "suffrage": "0"
-  },
-  {
-    "number": "1942",
-    "name": "Practical CyberSecurity Days",
-    "link": "https://gb.kyivcity.gov.ua/projects/11/1942",
-    "amount": "112800",
-    "suffrage": "0"
-  },
-  {
-    "number": "2203",
-    "name": "Медіашкола",
-    "link": "https://gb.kyivcity.gov.ua/projects/11/2203",
-    "amount": "104585",
+    "number": "1116",
+    "name": "Міжгалузевий хакатон",
+    "link": "https://gb.kyivcity.gov.ua/projects/16/1116",
+    "amount": "108120",
     "suffrage": "0"
   }
 ]

@@ -12,7 +12,7 @@ const missNAU = require('./bin/missNAU.js');
 //server
 let data = parser.data, start = true;
 let dataMISS = missNAU.data;
-if(start)
+if(process.env.MODE === 'dev')
 {
   missNAU.start();
   start = false;
