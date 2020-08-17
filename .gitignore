@@ -4,3 +4,4 @@ bin/select.js
 .idea/workspace.xml
 .idea/workspace.xml
 public/index.html
+node_modules/**/*
