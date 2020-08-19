@@ -24,74 +24,75 @@ function insert() {
     if (err) throw err;
     else console.log("Insert success");
     //});
-    const time = [3, 12, 36, 72, 144, 288];
-    time.forEach(function (timeLimit, index) {
-      const sumSQL = `SELECT * FROM (SELECT * FROM projects ORDER BY id DESC LIMIT 0 , ${timeLimit}) t ORDER BY id ASC;`;
-      conn.query(sumSQL, function (err, results) {
-        if (err) throw err;
-        else {
-          const pushData = (key) => {
-            data.forEach(function (value, index1) {
-              if (results.length > 1) {
-                value[key] =
-                  results[results.length - 1][`pr${value.number}`] -
-                  results[0][`pr${value.number}`];
-              } else {
-                value[key] = results ? results[0][`pr${value.number}`] : 0;
-              }
-            });
-          };
+  });
 
-          switch (timeLimit) {
-            case 3:
-              return pushData("ten");
-            case 12:
-              return pushData("hour1");
-            case 36:
-              return pushData("hour3");
-            case 72:
-              return pushData("hour6");
-            case 144:
-              return pushData("hour12");
-            case 288:
-              return pushData("hour24");
-          }
-        }
-      });
-    });
-    // });
-
-    const sqlSelect = `SELECT * from projects`;
-    conn.query(sqlSelect, function (err, result) {
+  const time = [3, 12, 36, 72, 144, 288];
+  time.forEach(function (timeLimit, index) {
+    const sumSQL = `SELECT * FROM (SELECT * FROM projects ORDER BY id DESC LIMIT 0 , ${timeLimit}) t ORDER BY id ASC;`;
+    conn.query(sumSQL, function (err, results) {
       if (err) throw err;
       else {
-        data.forEach(function (valueD, indexD) {
-          let mass = [],
-            massSUM = [],
-            massRg = [];
-          for (let index = 0; index < result.length; index += 12) {
-            massSUM.push(result[index][`pr${valueD.number}`]);
-          }
-          for (let index = 0; index < result.length; index += 12) {
-            massRg.push(
-              Math.round(
-                (result[index][`pr${valueD.number}`] / valueD.amount) * 10000000
-              )
-            );
-          }
+        const pushData = (key) => {
+          data.forEach(function (value, index1) {
+            if (results.length > 1) {
+              value[key] =
+                results[results.length - 1][`pr${value.number}`] -
+                results[0][`pr${value.number}`];
+            } else {
+              value[key] = results ? results[0][`pr${value.number}`] : 0;
+            }
+          });
+        };
 
-          for (let time = 1; time < result.length; time += 2) {
-            mass.push(
-              result[time][`pr${valueD.number}`] -
-                result[time - 1][`pr${valueD.number}`]
-            );
-          }
-          data[indexD].data = mass;
-          data[indexD].dataSUM = massSUM;
-          data[indexD].dataRg = massRg;
-        });
+        switch (timeLimit) {
+          case 3:
+            return pushData("ten");
+          case 12:
+            return pushData("hour1");
+          case 36:
+            return pushData("hour3");
+          case 72:
+            return pushData("hour6");
+          case 144:
+            return pushData("hour12");
+          case 288:
+            return pushData("hour24");
+        }
       }
     });
+  });
+  // });
+
+  const sqlSelect = `SELECT * from projects`;
+  conn.query(sqlSelect, function (err, result) {
+    if (err) throw err;
+    else {
+      data.forEach(function (valueD, indexD) {
+        let mass = [],
+          massSUM = [],
+          massRg = [];
+        for (let index = 0; index < result.length; index += 12) {
+          massSUM.push(result[index][`pr${valueD.number}`]);
+        }
+        for (let index = 0; index < result.length; index += 12) {
+          massRg.push(
+            Math.round(
+              (result[index][`pr${valueD.number}`] / valueD.amount) * 10000000
+            )
+          );
+        }
+
+        for (let time = 1; time < result.length; time += 2) {
+          mass.push(
+            result[time][`pr${valueD.number}`] -
+              result[time - 1][`pr${valueD.number}`]
+          );
+        }
+        data[indexD].data = mass;
+        data[indexD].dataSUM = massSUM;
+        data[indexD].dataRg = massRg;
+      });
+    }
   });
 }
 
@@ -180,7 +181,7 @@ module.exports.start = function () {
   initDb()
     .then((_conn) => {
       conn = _conn;
-      parse()
+      parse();
     })
     .catch((err) => console.error("Failde init db", err));
 };

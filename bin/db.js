@@ -1,7 +1,7 @@
 const mysql = require("mysql");
 const fs = require("fs");
 let conn = mysql.createPool({
-  connectionLimit: 50,
+  connectionLimit: 10,
   host: "eu-cdbr-west-03.cleardb.net",
   user: "b6f0316e1ff69d",
   password: "ef4627abc83df7f",
