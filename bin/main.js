@@ -28,12 +28,13 @@ function insert() {
 
   const time = [3, 12, 36, 72, 144, 288];
   time.forEach(function (timeLimit, index) {
-    const sumSQL = `SELECT * FROM (SELECT * FROM projects ORDER BY id DESC LIMIT 0 , ${timeLimit}) t ORDER BY id ASC;`;
+    const sumSQL = `SELECT * FROM (SELECT * FROM projects ORDER BY id DESC LIMIT 0 , 288) t ORDER BY id ASC;`;
     conn.query(sumSQL, function (err, results) {
       if (err) throw err;
       else {
         const pushData = (key) => {
-          data.forEach(function (value, index1) {
+          for (let i = 0; i < timeLimit; i++) {
+            const value = results[i]
             if (results.length > 1) {
               value[key] =
                 results[results.length - 1][`pr${value.number}`] -
@@ -41,7 +42,7 @@ function insert() {
             } else {
               value[key] = results ? results[0][`pr${value.number}`] : 0;
             }
-          });
+          };
         };
 
         switch (timeLimit) {
