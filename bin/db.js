@@ -1,21 +1,21 @@
 const mysql = require("mysql");
 const fs = require("fs");
-let conn = mysql.createPool({
+/* let conn = mysql.createPool({
   connectionLimit: 10,
   host: "eu-cdbr-west-03.cleardb.net",
   user: "badf4fb9382e0c",
   password: "657e7e1e",
   database: "heroku_0799cb07ca52401",
   reconnect: true
-});
-/* let conn = mysql.createPool({
+}); */
+let conn = mysql.createPool({
   connectionLimit: 10,
   host: "eu-cdbr-west-03.cleardb.net",
   user: "b6f0316e1ff69d",
   password: "ef4627abc83df7f",
   database: "heroku_06ed86d53ec2941",
   reconnect: true
-}); */
+});
 
 const data = JSON.parse(fs.readFileSync(`views/project.json`));
 
