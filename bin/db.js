@@ -3,12 +3,15 @@ const fs = require("fs");
 let conn = mysql.createPool({
   connectionLimit: 10,
   host: "eu-cdbr-west-03.cleardb.net",
-  user: "b6f0316e1ff69d",
-  password: "ef4627abc83df7f",
-  database: "heroku_06ed86d53ec2941",
+  user: "badf4fb9382e0c",
+  password: "657e7e1e",
+  database: "heroku_0799cb07ca52401",
+  reconnect: true
 });
 /*
 /*
+mysql://badf4fb9382e0c:657e7e1e@eu-cdbr-west-03.cleardb.net/heroku_0799cb07ca52401?reconnect=true
+
 database: 'dbForGB',
     host: "localhost",
     user: "root",
