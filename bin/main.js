@@ -38,7 +38,7 @@ function insert() {
             const value = data[i]
             if (results.length > 1) {
               value[key] =
-                results[results.length - 1][`pr${value.number}`] -
+                results[timeLimit - 1][`pr${value.number}`] -
                 results[0][`pr${value.number}`];
             } else {
               value[key] = results.length ? results[0][`pr${value.number}`] : 0;
