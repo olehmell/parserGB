@@ -68,5 +68,33 @@
     "link": "https://gb.kyivcity.gov.ua/projects/16/1455",
     "amount": "374400",
     "suffrage": "0"
+  },
+  {
+    "number": "1438",
+    "name": "Мед. обладнання",
+    "link": "https://gb.kyivcity.gov.ua/projects/16/1438",
+    "amount": "1382400",
+    "suffrage": "0"
+  },
+  {
+    "number": "21",
+    "name": "Radioday",
+    "link": "https://gb.kyivcity.gov.ua/projects/16/21",
+    "amount": "2131000",
+    "suffrage": "0"
+  },
+  {
+    "number": "1497",
+    "name": "Спортивно-освітній простір",
+    "link": "https://gb.kyivcity.gov.ua/projects/16/1497",
+    "amount": "1404000",
+    "suffrage": "0"
+  },
+  {
+    "number": "24",
+    "name": "Snigfest",
+    "link": "https://gb.kyivcity.gov.ua/projects/16/24",
+    "amount": "1633000",
+    "suffrage": "0"
   }
 ]

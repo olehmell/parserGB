@@ -17,6 +17,15 @@ let conn = mysql.createPool({
   reconnect: true
 });
 
+/* let conn = mysql.createPool({
+  connectionLimit: 10,
+  host: "db4free.net",
+  user: "parser2021",
+  password: "PHWJEm982iGm",
+  database: "naugb2021",
+  reconnect: true
+}); */
+
 const data = JSON.parse(fs.readFileSync(`views/project.json`));
 
 function createTable() {
