@@ -30,14 +30,13 @@ function insert() {
   time.forEach(function (timeLimit, index) {
     const sumSQL = `SELECT * FROM (SELECT * FROM projects ORDER BY id DESC LIMIT 0 , 289) t ORDER BY id ASC;`;
     conn.query(sumSQL, function (err, results) {
-
-      const lastIndex = results.length
       if (err) throw err;
       else {
         const pushData = (key) => {
           for (let i = 0; i < data.length; i++) {
             const value = data[i]
             if (results.length > 1) {
+              const lastIndex = results.length
               value[key] =
                 results[lastIndex][`pr${value.number}`] -
                 results[lastIndex - timeLimit][`pr${value.number}`];
