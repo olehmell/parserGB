@@ -35,11 +35,18 @@ function insert() {
         const pushData = (key) => {
           for (let i = 0; i < data.length; i++) {
             const value = data[i]
+            console.log('length', results.length, timeLimit)
             if (results.length > 1) {
               const lastIndex = results.length - 1
-              value[key] =
-                results[lastIndex][`pr${value.number}`] -
-                results[lastIndex - timeLimit][`pr${value.number}`];
+              if (timeLimit <= results.length) {
+                value[key] =
+                  results[lastIndex][`pr${value.number}`] -
+                  results[lastIndex - timeLimit][`pr${value.number}`];
+              } else {
+                value[key] =
+                  results[lastIndex][`pr${value.number}`] -
+                  results[0][`pr${value.number}`];
+              }
             } else {
               value[key] = results.length ? results[0][`pr${value.number}`] : 0;
             }
