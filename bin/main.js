@@ -36,7 +36,7 @@ function insert() {
           for (let i = 0; i < data.length; i++) {
             const value = data[i]
             if (results.length > 1) {
-              const lastIndex = results.length
+              const lastIndex = results.length - 1
               value[key] =
                 results[lastIndex][`pr${value.number}`] -
                 results[lastIndex - timeLimit][`pr${value.number}`];
